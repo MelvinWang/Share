@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--沉浸式-->
+    <color name="status_bar">#ffffff</color>
+
+    <!--主题颜色-->
+    <color name="app_common_red">#ee2a3e</color>
+
+    <!--编辑框背景-->
+    <color name="DCDCE6">#DCDCE6</color>
+    <!--按钮背景-->
+    <color name="eededede">#eededede</color>
+
+    <!--广告栏指示灯背景-->
+    <color name="banner_background">#463F40</color>
+    <color name="banner">#F5983F</color>
+    <color name="gray_light">#aaaaaa</color>
+    <color name="home_background">#eeeeef</color>
+
+    <!--页面标题-->
+    <color name="color_333">#333</color>
+    <color name="white">#ffffff</color>
+    <color name="f2f2f2">#f2f2f2</color>
+    <color name="color_999">#999</color>
+    <color name="color_ddd">#eee</color>
+    <color name="color_777">#777</color>
+</resources>

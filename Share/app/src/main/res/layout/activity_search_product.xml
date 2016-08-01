@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ActivitySearchProductBinding">
+
+        <variable
+            name="viewModel"
+            type="com.melvin.share.modelview.SearchProductViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_common_red"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:title=" ">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_normal_background">
+
+                <EditText
+                    android:id="@+id/search_enter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="关键字"
+                    android:padding="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white" />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <com.melvin.share.view.MyRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:adapter="@{viewModel.adapter}"
+            app:data="@{viewModel.data}"
+            app:layoutManager="@{viewModel.linearLayoutManager}"
+            tools:listitem="@layout/receive_address_item" />
+
+    </LinearLayout>
+
+</layout>
