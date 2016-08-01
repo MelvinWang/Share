@@ -22,7 +22,7 @@ import java.util.List;
  * <p/>
  * Author:Melvin
  * <p/>
- * 功能：商店里的全部商品Adapter
+ * 功能：商店里的全部商品Adapter测试GIT
  */
 public class AllProductAdapter extends BaseAdapter<AllProductAdapter.BindingHolder> {
     private List<BaseModel> list;
