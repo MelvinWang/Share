@@ -15,7 +15,7 @@ import com.melvin.share.databinding.FragmentAllProductBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.fragment.main.BaseFragment;
-import com.melvin.share.view.MyRecyclerView;
+import com.melvin.share.view.NoRefreshRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +27,11 @@ import java.util.List;
  * <p>
  * 描述：全部商品
  */
-public class AllProductFragment extends BaseFragment implements MyRecyclerView.LoadingListener {
+public class AllProductFragment extends BaseFragment implements NoRefreshRecyclerView.LoadingListener {
 
     private FragmentAllProductBinding binding;
     private Context mContext;
-    private MyRecyclerView mRecyclerView;
+    private NoRefreshRecyclerView mRecyclerView;
     private AllProductAdapter allProductAdapter;
     private List<BaseModel> data = new ArrayList<>();
 
@@ -50,6 +50,7 @@ public class AllProductFragment extends BaseFragment implements MyRecyclerView.L
     private void initData() {
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadingListener(this);
     }
 
@@ -87,16 +88,6 @@ public class AllProductFragment extends BaseFragment implements MyRecyclerView.L
 
     }
 
-    /**
-     * 下拉刷新
-     */
-    @Override
-    public void onRefresh() {
-        data.clear();
-        requestData();
-        mRecyclerView.refreshComplete();
-
-    }
 
     /**
      * 上拉加载更多

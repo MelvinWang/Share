@@ -29,6 +29,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/page_15"
+            android:textColor="@color/color_333"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="产品名称：" />
@@ -37,6 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
+            android:textSize="@dimen/page_15"
+            android:textColor="@color/ff9000"
             android:paddingTop="15dp"
             android:text="￥:12：00" />
     </LinearLayout>

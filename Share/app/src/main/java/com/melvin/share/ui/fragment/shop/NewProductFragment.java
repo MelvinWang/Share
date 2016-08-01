@@ -15,23 +15,23 @@ import com.melvin.share.databinding.FragmentNewProductBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.fragment.main.BaseFragment;
-import com.melvin.share.view.MyRecyclerView;
+import com.melvin.share.view.NoRefreshRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Author: Melvin
- * <p/>
+ * <p>
  * Data： 2016/7/25
- * <p/>
+ * <p>
  * 描述：新品上架
  */
-public class NewProductFragment extends BaseFragment implements MyRecyclerView.LoadingListener {
+public class NewProductFragment extends BaseFragment implements NoRefreshRecyclerView.LoadingListener {
 
     private FragmentNewProductBinding binding;
     private Context mContext;
-    private MyRecyclerView mRecyclerView;
+    private NoRefreshRecyclerView mRecyclerView;
     private NewProductAdapter newProductAdapter;
     private List<BaseModel> data = new ArrayList<>();
 
@@ -50,6 +50,7 @@ public class NewProductFragment extends BaseFragment implements MyRecyclerView.L
     private void initData() {
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadingListener(this);
     }
 
@@ -76,23 +77,12 @@ public class NewProductFragment extends BaseFragment implements MyRecyclerView.L
         List list = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             User user = new User();
-            user.password = i+"";
-            user.username = i+"";
+            user.password = i + "";
+            user.username = i + "";
             list.add(user);
         }
         data.addAll(list);
         newProductAdapter.notifyDataSetChanged();
-
-    }
-
-    /**
-     * 下拉刷新
-     */
-    @Override
-    public void onRefresh() {
-        data.clear();
-        requestData();
-        mRecyclerView.refreshComplete();
 
     }
 

@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.allure.lbanners.LMBanners;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.adapter.ProductInformationAdapter;
@@ -19,6 +17,7 @@ import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.fragment.main.BaseFragment;
 import com.melvin.share.view.MyRecyclerView;
+import com.melvin.share.view.NoRefreshRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +29,11 @@ import java.util.List;
  * <p/>
  * 描述：单个商品详细信息
  */
-public class ProductInfoFragment extends BaseFragment implements MyRecyclerView.LoadingListener {
+public class ProductInfoFragment extends BaseFragment implements NoRefreshRecyclerView.LoadingListener {
     private FragmentProductinfoBinding binding;
     private Context mContext;
     private LMBanners mLBanners;
-    private MyRecyclerView mRecyclerView;
+    private NoRefreshRecyclerView mRecyclerView;
     private ProductInformationAdapter productInformationAdapter;
     private List<BaseModel> data = new ArrayList<>();
     //本地图片
@@ -58,6 +57,7 @@ public class ProductInfoFragment extends BaseFragment implements MyRecyclerView.
     private void initData() {
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadingListener(this);
     }
 
@@ -103,16 +103,6 @@ public class ProductInfoFragment extends BaseFragment implements MyRecyclerView.
     }
 
 
-    /**
-     * 下拉刷新
-     */
-    @Override
-    public void onRefresh() {
-        data.clear();
-        requestData();
-        mRecyclerView.refreshComplete();
-
-    }
 
     /**
      * 上拉加载更多
