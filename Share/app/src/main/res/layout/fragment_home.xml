@@ -6,8 +6,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <LinearLayout
             android:id="@+id/root"
@@ -18,28 +18,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/home_scan"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                 android:padding="8dp"
                     android:layout_weight="1"
+                    android:padding="8dp"
                     android:src="@mipmap/home_scan" />
 
                 <EditText
                     android:id="@+id/search_enter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/home_scan"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="1dp"
+                    android:layout_toRightOf="@id/home_scan"
                     android:layout_weight="8"
                     android:background="@drawable/edit_redline_background"
+                    android:cursorVisible="false"
                     android:drawableLeft="@mipmap/search"
-                    android:layout_marginBottom="1dp"
                     android:drawablePadding="10dp"
                     android:hint="关键字"
                     android:padding="4dp" />
@@ -48,8 +48,8 @@
                     android:id="@+id/home_locatino"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
                     android:layout_weight="1"
+                    android:padding="8dp"
                     android:src="@mipmap/home_location" />
             </LinearLayout>
 
@@ -206,8 +206,8 @@
                 android:textColor="@color/color_333" />
 
             <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
                 android:id="@+id/new_recyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="245dp" />
 
             <TextView
@@ -221,8 +221,8 @@
                 android:textColor="@color/color_333" />
 
             <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
                 android:id="@+id/user_recommend_recyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="245dp" />
 
             <TextView
@@ -236,10 +236,10 @@
                 android:textColor="@color/color_333" />
 
             <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
                 android:id="@+id/shop_recyclerView"
-                android:layout_marginBottom="20dp"
-                android:layout_height="120dp" />
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="20dp" />
 
 
         </LinearLayout>

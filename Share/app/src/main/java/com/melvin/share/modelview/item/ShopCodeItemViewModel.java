@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.view.View;
 
+import com.melvin.share.Utils.RxBus;
 import com.melvin.share.model.User;
 
 /**
@@ -26,7 +27,9 @@ public class ShopCodeItemViewModel extends BaseObservable {
     public void onItemClick(View view) {
 
     }
-
+    public void onclickShare(View view) {
+        RxBus.get().post("hello22");
+    }
     public String getImgUrl() {
         return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
     }

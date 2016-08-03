@@ -11,51 +11,99 @@
 
     </data>
 
-    <LinearLayout
-        android:id="@+id/root"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/f2f2f2"
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
+            android:id="@+id/root"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/app_common_red"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:title=" ">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/edit_normal_background">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:title=" ">
 
-                <EditText
-                    android:id="@+id/search_enter"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="关键字"
-                    android:padding="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@android:color/white" />
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
+                    android:orientation="horizontal">
 
-        <com.melvin.share.view.MyRecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:adapter="@{viewModel.adapter}"
-            app:data="@{viewModel.data}"
-            app:layoutManager="@{viewModel.linearLayoutManager}"
-            tools:listitem="@layout/receive_address_item" />
+                    <EditText
+                        android:id="@+id/search_enter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edit_redline_background"
+                        android:drawableLeft="@mipmap/search"
+                        android:drawablePadding="10dp"
+                        android:hint="关键字"
+                        android:padding="4dp" />
+                </LinearLayout>
+            </android.support.v7.widget.Toolbar>
 
-    </LinearLayout>
+            <TextView
+                style="@style/CommonLine"
+                android:layout_marginTop="2dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="综合"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="销量"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="价格"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="分享"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <com.melvin.share.view.MyRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                app:adapter="@{viewModel.adapter}"
+                app:data="@{viewModel.data}"
+                app:layoutManager="@{viewModel.linearLayoutManager}"
+                tools:listitem="@layout/search_product_item" />
+        </LinearLayout>
+    </ScrollView>
 </layout>

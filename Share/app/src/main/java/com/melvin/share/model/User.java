@@ -11,4 +11,6 @@ public class User extends BaseModel{
 
     public String username;
     public String password;
+    public boolean isChecked=false;
+    public boolean isShow=false;
 }

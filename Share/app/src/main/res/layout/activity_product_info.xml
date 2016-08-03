@@ -7,6 +7,7 @@
     </data>
 
     <LinearLayout
+        android:id="@+id/product_info_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -81,6 +82,7 @@
                 android:src="@mipmap/productinfo_collection_n" />
 
             <Button
+                android:onClick="joinShopCar"
                 style="@style/CircularBtnStyle"
                 android:layout_width="0dp"
                 android:layout_marginRight="20dp"
@@ -91,6 +93,7 @@
                 android:textSize="11sp" />
 
             <Button
+                android:onClick="purchaseNow"
                 style="@style/CircularBtnStyle"
                 android:layout_width="0dp"
                 android:layout_marginRight="20dp"

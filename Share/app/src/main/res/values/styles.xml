@@ -34,6 +34,16 @@
         <item name="android:layout_marginTop">25dip</item>
     </style>
 
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
     <!-- 低栏RadioButton的样式 -->
     <style name="BottomTabStyle">
         <item name="android:layout_width">0dp</item>

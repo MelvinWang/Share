@@ -1,7 +1,10 @@
 package com.melvin.share.ui.fragment.main;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,24 +15,28 @@ import android.view.ViewGroup;
 import com.allure.lbanners.LMBanners;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.Utils.Utils;
 import com.melvin.share.adapter.HomeProductAdapter;
 import com.melvin.share.adapter.HomeShopAdapter;
 import com.melvin.share.adapter.LocalImgAdapter;
 import com.melvin.share.databinding.FragmentHomeBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.SearchActivity;
+import com.melvin.share.ui.activity.common.MainActivity;
+import com.melvin.share.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Author: Melvin
- * <p/>
+ * <p>
  * Data： 2016/7/17
- * <p/>
+ * <p>
  * 描述：首页
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private FragmentHomeBinding binding;
     private Context mContext;
@@ -52,10 +59,44 @@ public class HomeFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         mContext = getActivity();
         mLBanners = binding.banners;
+        initClick();
         initData();
         initAdapter();
         LogUtils.i("HomeFragment+initView");
         return binding.getRoot();
+    }
+
+    /**
+     * 初始化点击事件
+     */
+    private void initClick() {
+        binding.homeScan.setOnClickListener(this);
+        binding.searchEnter.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.home_scan:
+                Intent openCameraIntent = new Intent(mContext, CaptureActivity.class);
+                startActivityForResult(openCameraIntent, 0);
+                break;
+            case R.id.search_enter:
+                startActivity(new Intent(mContext, SearchActivity.class));
+                break;
+
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == ((Activity) mContext).RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString("result");
+            Utils.showToast(mContext, scanResult);
+        }
     }
 
     @Override

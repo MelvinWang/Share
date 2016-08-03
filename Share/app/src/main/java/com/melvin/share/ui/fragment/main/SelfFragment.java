@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.databinding.FragmentSelfBinding;
+import com.melvin.share.ui.activity.ShopCollectionActivity;
+import com.melvin.share.ui.activity.WaitPayActivity;
 import com.melvin.share.ui.activity.common.LoginActivity;
 import com.melvin.share.ui.activity.selfcenter.ManageAddressActivity;
 import com.melvin.share.ui.activity.selfcenter.MyRebateActivity;
@@ -82,6 +84,8 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 mContext.startActivity(intent);
                 break;
             case R.id.click_shop_collection://店铺收藏
+                intent.setClass(mContext, ShopCollectionActivity.class);
+                mContext.startActivity(intent);
 
                 break;
             case R.id.click_scan_history://浏览历史
@@ -92,7 +96,8 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
 
                 break;
             case R.id.click_wait_pay://待付款
-
+                intent.setClass(mContext, WaitPayActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.click_wait_send_product://待发货
 

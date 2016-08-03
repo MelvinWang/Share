@@ -43,7 +43,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- 注册登录 -->
         <activity android:name=".ui.activity.common.LoginActivity" />
         <activity android:name=".ui.activity.common.RegisterFirstActivity" />
@@ -57,11 +56,21 @@
 
 
         <activity android:name=".ui.activity.ProductInfoActivity" />
+        <activity android:name=".ui.activity.ConfirmOrderActivity" />
+        <activity android:name=".ui.activity.ShopCollectionActivity" />
+        <activity android:name=".ui.activity.WaitPayActivity" />
+        <activity android:name=".ui.activity.SearchActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            />
+        <activity android:name=".ui.activity.SearchProductActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            />
         <activity
             android:name=".ui.activity.ShopInformationActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
-
+        <!-- 扫描页面 -->
+        <activity android:name="com.melvin.share.zxing.activity.CaptureActivity" />
         <!--    <activity android:name=".ui.activity.common.MainActivity"/>-->
     </application>
 
