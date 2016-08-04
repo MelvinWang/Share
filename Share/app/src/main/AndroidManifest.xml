@@ -43,10 +43,12 @@
             </intent-filter>
         </activity>
 
-        <!-- 注册登录 -->
+        <!-- 注册登录，修改手机号码 -->
         <activity android:name=".ui.activity.common.LoginActivity" />
         <activity android:name=".ui.activity.common.RegisterFirstActivity" />
         <activity android:name=".ui.activity.common.RegisterSecondActivity" />
+        <activity android:name=".ui.activity.common.AmendPasswordActivity" />
+        <activity android:name=".ui.activity.common.AmendPhoneActivity" />
         <!-- 个人中心 -->
         <activity android:name=".ui.activity.selfcenter.MyRebateActivity" />
         <activity android:name=".ui.activity.selfcenter.OpenshopFirstActivity" />
@@ -59,12 +61,15 @@
         <activity android:name=".ui.activity.ConfirmOrderActivity" />
         <activity android:name=".ui.activity.ShopCollectionActivity" />
         <activity android:name=".ui.activity.WaitPayActivity" />
-        <activity android:name=".ui.activity.SearchActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            />
-        <activity android:name=".ui.activity.SearchProductActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            />
+        <activity android:name=".ui.activity.OderEvaluateActivity" />
+        <activity android:name=".ui.activity.ProductCollectionActivity" />
+        <activity android:name=".ui.activity.ScanHistoryActivity" />
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".ui.activity.SearchProductActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name=".ui.activity.ShopInformationActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
