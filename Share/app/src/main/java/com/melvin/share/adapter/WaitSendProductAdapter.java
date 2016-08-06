@@ -7,34 +7,34 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.melvin.share.R;
-import com.melvin.share.databinding.WaitPayItemBinding;
+import com.melvin.share.databinding.WaitSendProductItemBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
-import com.melvin.share.modelview.item.WaitPayItemViewModel;
+import com.melvin.share.modelview.item.WaitSendproductItemViewModel;
 
 import java.util.List;
 
 /**
  * Author: Melvin
  * <p>
- * Data： 2016/8/4
+ * Data： 2016/8/6
  * <p>
- * 描述：待付款页面Adapter
+ * 描述：待发货页面Adapter
  */
-public class WaitPayAdapter extends BaseAdapter<WaitPayAdapter.BindingHolder> {
+public class WaitSendProductAdapter extends BaseAdapter<WaitSendProductAdapter.BindingHolder> {
     private List<BaseModel> list;
     private Context context;
 
-    public WaitPayAdapter(Context context, List<BaseModel> list) {
+    public WaitSendProductAdapter(Context context, List<BaseModel> list) {
         this.list = list;
         this.context = context;
     }
 
     @Override
-    public WaitPayAdapter.BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        WaitPayItemBinding binding = DataBindingUtil.inflate(
+    public WaitSendProductAdapter.BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        WaitSendProductItemBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.wait_pay_item,
+                R.layout.wait_send_product_item,
                 parent,
                 false);
         return new BindingHolder(binding);
@@ -55,16 +55,16 @@ public class WaitPayAdapter extends BaseAdapter<WaitPayAdapter.BindingHolder> {
      * Holder
      */
     public class BindingHolder extends RecyclerView.ViewHolder {
-        final WaitPayItemBinding binding;
+        final WaitSendProductItemBinding binding;
 
-        public BindingHolder(WaitPayItemBinding binding) {
+        public BindingHolder(WaitSendProductItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
         void bindObject(final User user) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new WaitPayItemViewModel(context, user));
+                binding.setViewModel(new WaitSendproductItemViewModel(context, user));
             } else {
                 binding.getViewModel().setEntity(user);
             }

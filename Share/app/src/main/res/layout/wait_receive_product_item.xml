@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.melvin.share.modelview.item.WaitPayItemViewModel" />
+            type="com.melvin.share.modelview.item.WaitReceiveProductItemViewModel" />
     </data>
 
     <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="已下单"
+                android:text="已发货"
                 android:textColor="@color/app_common_red" />
         </RelativeLayout>
 
@@ -178,7 +178,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_rectangle_withradus"
-                android:text="付款"
+                android:text="确认收货"
                 android:textColor="@color/app_common_red"
                 android:textSize="15sp" />
         </RelativeLayout>

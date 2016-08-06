@@ -7,7 +7,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import com.melvin.share.databinding.FragmentHomeBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.SearchActivity;
-import com.melvin.share.ui.activity.common.MainActivity;
+import com.melvin.share.view.NoScrollRecyclerView;
 import com.melvin.share.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
@@ -50,9 +49,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private List<BaseModel> data1 = new ArrayList<>();
     private List<BaseModel> data2 = new ArrayList<>();
     private List<BaseModel> data3 = new ArrayList<>();
-    private RecyclerView newRecyclerView;
-    private RecyclerView userRecommendRecyclerView;
-    private RecyclerView shopRecyclerView;
+    private NoScrollRecyclerView newRecyclerView;
+    private NoScrollRecyclerView userRecommendRecyclerView;
+    private NoScrollRecyclerView shopRecyclerView;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {

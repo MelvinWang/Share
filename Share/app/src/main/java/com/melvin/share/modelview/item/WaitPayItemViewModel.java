@@ -13,12 +13,12 @@ import com.melvin.share.model.User;
  * <p>
  * 功能：待付款item的ViewModel
  */
-public class WayPayItemViewModel extends BaseObservable {
+public class WaitPayItemViewModel extends BaseObservable {
 
     private User user;
     private Context context;
 
-    public WayPayItemViewModel(Context context, User user) {
+    public WaitPayItemViewModel(Context context, User user) {
         this.user = user;
         this.context = context;
     }

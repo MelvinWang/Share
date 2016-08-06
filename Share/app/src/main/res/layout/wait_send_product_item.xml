@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.melvin.share.modelview.item.WaitPayItemViewModel" />
+            type="com.melvin.share.modelview.item.WaitSendproductItemViewModel" />
     </data>
 
     <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="已下单"
+                android:text="侍发货"
                 android:textColor="@color/app_common_red" />
         </RelativeLayout>
 
@@ -158,30 +158,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@color/color_ddd"
-            android:textSize="1dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                style="@style/CircularBtnStyle"
-                android:layout_width="100dp"
-                android:layout_height="45dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/btn_rectangle_withradus"
-                android:text="付款"
-                android:textColor="@color/app_common_red"
-                android:textSize="15sp" />
-        </RelativeLayout>
     </LinearLayout>
 
 </layout>

@@ -2,22 +2,23 @@ package com.melvin.share.view;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * 不能左右划的ViewPager
+ * 不能左右划的RecyclerView
  * 
  * @author Melvin
  * 
  */
-public class NoScrollViewPager extends ViewPager {
+public class NoScrollRecyclerView extends RecyclerView {
 
-	public NoScrollViewPager(Context context, AttributeSet attrs) {
+	public NoScrollRecyclerView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public NoScrollViewPager(Context context) {
+	public NoScrollRecyclerView(Context context) {
 		super(context);
 	}
 

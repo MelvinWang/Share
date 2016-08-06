@@ -6,30 +6,29 @@ import android.widget.LinearLayout;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
-import com.melvin.share.databinding.ActivityShopCollectionBinding;
-import com.melvin.share.databinding.ActivityWaitPayBinding;
-import com.melvin.share.modelview.WaitPayViewModel;
+import com.melvin.share.databinding.ActivityWaitEvaluateBinding;
+import com.melvin.share.modelview.WaitEvaluateViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 
 /**
  * Author: Melvin
  * <p/>
- * Data： 2016/8/4
+ * Data： 2016/8/6
  * <p/>
- * 描述： 待付款页面
+ * 描述： 退款页面
  */
-public class WaitPayActivity extends BaseActivity implements MyRecyclerView.LoadingListener {
+public class RefundActivity extends BaseActivity implements MyRecyclerView.LoadingListener {
 
-    private ActivityWaitPayBinding binding;
+    private ActivityWaitEvaluateBinding binding;
     private Context mContext = null;
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
-    private WaitPayViewModel waitPayViewModel;
+    private WaitEvaluateViewModel waitEvaluateViewModel;
 
     @Override
     protected void initView() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_wait_pay);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_wait_evaluate);
         mContext = this;
         initWindow();
         initToolbar(binding.toolbar);
@@ -41,9 +40,9 @@ public class WaitPayActivity extends BaseActivity implements MyRecyclerView.Load
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
-        waitPayViewModel = new WaitPayViewModel(this, mRecyclerView, mRoot);
-        binding.setViewModel(waitPayViewModel);
-        waitPayViewModel.requestData();
+        waitEvaluateViewModel = new WaitEvaluateViewModel(this, mRecyclerView, mRoot);
+        binding.setViewModel(waitEvaluateViewModel);
+        waitEvaluateViewModel.requestData();
     }
 
     /**
@@ -51,7 +50,7 @@ public class WaitPayActivity extends BaseActivity implements MyRecyclerView.Load
      */
     @Override
     public void onRefresh() {
-        waitPayViewModel.requestData();
+        waitEvaluateViewModel.requestData();
         mRecyclerView.refreshComplete();
     }
 
