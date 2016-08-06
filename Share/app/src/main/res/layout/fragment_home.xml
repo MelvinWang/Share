@@ -85,6 +85,7 @@
                 android:layout_marginTop="5dp">
 
                 <ImageButton
+                    android:id="@+id/home_delicious"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -100,6 +101,7 @@
                     android:textSize="1dp" />
 
                 <ImageButton
+                    android:id="@+id/home_cloth"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -115,6 +117,7 @@
                     android:textSize="1dp" />
 
                 <ImageButton
+                    android:id="@+id/home_ele"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -130,6 +133,7 @@
                     android:textSize="1dp" />
 
                 <ImageButton
+                    android:id="@+id/home_markup"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -148,6 +152,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
+                    android:id="@+id/home_furnish"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -163,6 +168,7 @@
                     android:textSize="1dp" />
 
                 <ImageButton
+                    android:id="@+id/home_ornament"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -178,6 +184,7 @@
                     android:textSize="1dp" />
 
                 <ImageButton
+                    android:id="@+id/home_shoes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -193,6 +200,7 @@
                     android:textSize="1dp" />
 
                 <ImageButton
+                    android:id="@+id/home_other"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

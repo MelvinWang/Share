@@ -21,7 +21,14 @@ import com.melvin.share.adapter.LocalImgAdapter;
 import com.melvin.share.databinding.FragmentHomeBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.home.ClothActivity;
+import com.melvin.share.ui.activity.home.DeliciousActivity;
+import com.melvin.share.ui.activity.home.DigitalActivity;
+import com.melvin.share.ui.activity.home.FurnitureActivity;
+import com.melvin.share.ui.activity.home.MarkUpActivity;
+import com.melvin.share.ui.activity.home.OrnamentActivity;
 import com.melvin.share.ui.activity.SearchActivity;
+import com.melvin.share.ui.activity.home.ShoesActivity;
 import com.melvin.share.view.NoScrollRecyclerView;
 import com.melvin.share.zxing.activity.CaptureActivity;
 
@@ -71,6 +78,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private void initClick() {
         binding.homeScan.setOnClickListener(this);
         binding.searchEnter.setOnClickListener(this);
+        //首页8个主题
+        binding.homeDelicious.setOnClickListener(this);
+        binding.homeCloth.setOnClickListener(this);
+        binding.homeEle.setOnClickListener(this);
+        binding.homeMarkup.setOnClickListener(this);
+        binding.homeFurnish.setOnClickListener(this);
+        binding.homeOrnament.setOnClickListener(this);
+        binding.homeShoes.setOnClickListener(this);
+        binding.homeOther.setOnClickListener(this);
     }
 
 
@@ -83,6 +99,31 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.search_enter:
                 startActivity(new Intent(mContext, SearchActivity.class));
+                break;
+            //首页8个主题
+            case R.id.home_delicious:
+                startActivity(new Intent(mContext, DeliciousActivity.class));
+                break;
+            case R.id.home_cloth:
+                startActivity(new Intent(mContext, ClothActivity.class));
+                break;
+            case R.id.home_ele:
+                startActivity(new Intent(mContext, DigitalActivity.class));
+                break;
+            case R.id.home_markup:
+                startActivity(new Intent(mContext, MarkUpActivity.class));
+                break;
+            case R.id.home_furnish:
+                startActivity(new Intent(mContext, FurnitureActivity.class));
+                break;
+            case R.id.home_ornament:
+                startActivity(new Intent(mContext, OrnamentActivity.class));
+                break;
+            case R.id.home_shoes:
+                startActivity(new Intent(mContext, ShoesActivity.class));
+                break;
+            case R.id.home_other:
+                Utils.showToast(mContext, "其他页面");
                 break;
 
         }

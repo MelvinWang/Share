@@ -15,22 +15,23 @@ import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.fragment.main.BaseFragment;
 import com.melvin.share.view.MyRecyclerView;
+import com.melvin.share.view.NoRefreshRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Author: Melvin
- * <p/>
+ * <p>
  * Data： 2016/7/21
- * <p/>
+ * <p>
  * 描述：即将可用
  */
-public class WillUsableFragment extends BaseFragment implements MyRecyclerView.LoadingListener {
+public class WillUsableFragment extends BaseFragment implements NoRefreshRecyclerView.LoadingListener {
 
     private FragmentWillUsableBinding binding;
     private Context mContext;
-    private MyRecyclerView mRecyclerView;
+    private NoRefreshRecyclerView mRecyclerView;
     private WillUsableAdapter willUsableAdapter;
     private List<BaseModel> data = new ArrayList<>();
 
@@ -49,6 +50,7 @@ public class WillUsableFragment extends BaseFragment implements MyRecyclerView.L
     private void initData() {
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
+        mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadingListener(this);
     }
 
@@ -84,17 +86,6 @@ public class WillUsableFragment extends BaseFragment implements MyRecyclerView.L
         list.add(user1);
         data.addAll(list);
         willUsableAdapter.notifyDataSetChanged();
-
-    }
-
-    /**
-     * 下拉刷新
-     */
-    @Override
-    public void onRefresh() {
-        data.clear();
-        requestData();
-        mRecyclerView.refreshComplete();
 
     }
 

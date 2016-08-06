@@ -15,6 +15,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <EditText
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:enabled="true" />
+
             <com.allure.lbanners.LMBanners
                 android:id="@+id/banners"
                 android:layout_width="match_parent"

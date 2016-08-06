@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:text="我的返利"
+                    android:text="我的返现"
                     android:textColor="@color/color_333"
                     android:textSize="@dimen/page_18" />
             </android.support.v7.widget.Toolbar>

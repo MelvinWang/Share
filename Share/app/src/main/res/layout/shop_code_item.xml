@@ -16,6 +16,7 @@
         android:layout_height="120dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:onClick="@{viewModel.onItemClick}"
         android:layout_marginTop="5dp"
         android:background="@drawable/list_background">
 

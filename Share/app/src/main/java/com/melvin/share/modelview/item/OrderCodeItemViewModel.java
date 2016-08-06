@@ -1,6 +1,7 @@
 package com.melvin.share.modelview.item;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.Gravity;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.melvin.share.R;
 import com.melvin.share.Utils.RxBus;
 import com.melvin.share.app.BaseApplication;
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.ProductInfoActivity;
 import com.melvin.share.ui.activity.common.MainActivity;
 import com.melvin.share.view.SelectPicPopupWindow;
 
@@ -30,7 +32,7 @@ public class OrderCodeItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-
+        context.startActivity(new Intent(context, ProductInfoActivity.class));
     }
     public void onclickShare(View view) {
         RxBus.get().post("hello11");

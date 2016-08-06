@@ -1,6 +1,7 @@
 package com.melvin.share.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -39,6 +40,11 @@ public class ShopInformationActivity extends BaseActivity {
         initWindow();
         initToolbar(binding.toolbar);
         ininData();
+    }
+
+
+    public void toSearchActivity(View v) {
+        startActivity(new Intent(mContext, SearchActivity.class));
     }
 
     private void ininData() {

@@ -10,8 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/f2f2f2"
-        >
+        android:background="@color/f2f2f2">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -38,8 +38,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/toolbar"
-                >
+                android:layout_below="@id/toolbar">
 
                 <EditText
                     android:id="@+id/user_name"
@@ -72,11 +71,43 @@
                     android:textColorHint="@color/color_999"
                     android:textSize="@dimen/page_18" />
 
+                <LinearLayout
+                    android:id="@+id/cerification_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/user_password"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/cerification_code"
+                        style="@style/CircularEditStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/password"
+                        android:drawablePadding="20dp"
+                        android:hint="请输入右边验证码"
+                        android:paddingLeft="20dp"
+                        android:textColor="@color/color_999"
+                        android:textColorHint="@color/color_999"
+                        android:textSize="@dimen/page_18" />
+
+                    <ImageView
+                        android:id="@+id/iv_showCode"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:onClick="refreshCerificationCode" />
+                </LinearLayout>
+
                 <RelativeLayout
                     android:id="@+id/about_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/user_password"
+                    android:layout_below="@id/cerification_ll"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp">
@@ -160,8 +191,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_line"
-                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 

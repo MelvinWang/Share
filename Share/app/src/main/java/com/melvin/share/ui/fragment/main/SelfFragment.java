@@ -3,7 +3,6 @@ package com.melvin.share.ui.fragment.main;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,18 @@ import android.view.ViewGroup;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.databinding.FragmentSelfBinding;
-import com.melvin.share.ui.activity.ShopCollectionActivity;
-import com.melvin.share.ui.activity.WaitPayActivity;
 import com.melvin.share.ui.activity.common.LoginActivity;
 import com.melvin.share.ui.activity.selfcenter.ManageAddressActivity;
 import com.melvin.share.ui.activity.selfcenter.MyRebateActivity;
 import com.melvin.share.ui.activity.selfcenter.OpenshopFirstActivity;
+import com.melvin.share.ui.activity.selfcenter.ProductCollectionActivity;
+import com.melvin.share.ui.activity.selfcenter.RefundActivity;
+import com.melvin.share.ui.activity.selfcenter.ScanHistoryActivity;
 import com.melvin.share.ui.activity.selfcenter.SettingActivity;
+import com.melvin.share.ui.activity.selfcenter.ShopCollectionActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitPayActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitReceiveProductActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitSendProductActivity;
 
 /**
  * Author: Melvin
@@ -54,6 +58,8 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
         binding.clickWaitPay.setOnClickListener(this);
         binding.clickWaitSendProduct.setOnClickListener(this);
         binding.clickWaitReceiveProduct.setOnClickListener(this);
+        binding.clickWaitEvaluate.setOnClickListener(this);
+        binding.clickRefund.setOnClickListener(this);
 
         binding.clickMyRebate.setOnClickListener(this);
         binding.clickOpenShop.setOnClickListener(this);
@@ -80,7 +86,7 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 mContext.startActivity(intent);
                 break;
             case R.id.click_product_collection://商品收藏
-                intent.setClass(mContext, LoginActivity.class);
+                intent.setClass(mContext, ProductCollectionActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.click_shop_collection://店铺收藏
@@ -89,7 +95,8 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
 
                 break;
             case R.id.click_scan_history://浏览历史
-
+                intent.setClass(mContext, ScanHistoryActivity.class);
+                mContext.startActivity(intent);
                 break;
 
             case R.id.click_order_examine://订单
@@ -100,10 +107,16 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 mContext.startActivity(intent);
                 break;
             case R.id.click_wait_send_product://待发货
-
+                intent.setClass(mContext, WaitSendProductActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.click_wait_receive_product://待收货
-
+                intent.setClass(mContext, WaitReceiveProductActivity.class);
+                mContext.startActivity(intent);
+                break;
+            case R.id.click_refund://退款
+                intent.setClass(mContext, RefundActivity.class);
+                mContext.startActivity(intent);
                 break;
 
 
@@ -111,11 +124,11 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 intent.setClass(mContext, MyRebateActivity.class);
                 mContext.startActivity(intent);
                 break;
-            case R.id.click_open_shop://我要开店
+            case R.id.click_open_shop://申请线上商场
                 intent.setClass(mContext, OpenshopFirstActivity.class);
                 mContext.startActivity(intent);
                 break;
-            case R.id.click_vip://升级超级会员
+            case R.id.click_vip://申请线下体验馆
 
                 break;
 

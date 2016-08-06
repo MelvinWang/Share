@@ -19,6 +19,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
+        android:onClick="@{viewModel.onItemClick}"
         android:background="@drawable/list_background">
 
         <CheckBox

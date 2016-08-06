@@ -1,11 +1,13 @@
 package com.melvin.share.modelview.item;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 import android.widget.CompoundButton;
 
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.ProductInfoActivity;
 
 /**
  * Created Time: 2016/8/4.
@@ -26,7 +28,7 @@ public class ProductCollectionItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-
+        context.startActivity(new Intent(context, ProductInfoActivity.class));
     }
 
 

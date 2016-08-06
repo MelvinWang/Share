@@ -1,10 +1,12 @@
 package com.melvin.share.modelview.item;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.ProductInfoActivity;
 
 /**
  * Created Time: 2016/7/25.
@@ -24,7 +26,7 @@ public class SearchProductItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-
+        context.startActivity(new Intent(context, ProductInfoActivity.class));
     }
 
     public String getImgUrl() {

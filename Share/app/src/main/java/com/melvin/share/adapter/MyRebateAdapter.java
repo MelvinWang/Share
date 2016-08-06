@@ -17,7 +17,7 @@ import com.melvin.share.ui.fragment.factory.FragmentRebateFactory;
  */
 public class MyRebateAdapter extends FragmentPagerAdapter {
     public final static int TAB_COUNT = 2;
-    private final static String[] mItems = new String[]{"可用返利", "即将可用"};
+    private final static String[] mItems = new String[]{"可用返现", "即将可用"};
     private Context context;
 
 

@@ -1,11 +1,13 @@
 package com.melvin.share.modelview.item;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.melvin.share.Utils.RxBus;
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.ShopInformationActivity;
 
 /**
  * Created Time: 2016/7/23.
@@ -25,7 +27,7 @@ public class ShopCodeItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-
+        context.startActivity(new Intent(context, ShopInformationActivity.class));
     }
     public void onclickShare(View view) {
         RxBus.get().post("hello22");

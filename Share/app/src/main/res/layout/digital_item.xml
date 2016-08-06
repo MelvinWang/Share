@@ -17,6 +17,7 @@
         android:background="@drawable/list_background"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
+        android:onClick="@{viewModel.onItemClick}"
         android:padding="4dp">
 
         <ImageView

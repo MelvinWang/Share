@@ -42,7 +42,8 @@ dependencies {
     compile('com.hwangjr.rxbus:rxbus:1.0.3') {
         exclude group: 'com.hwangjr.utils', module: 'timber'
     }
-    compile files('libs/core.jar')
+    compile files('libs/zbardecoder.jar')
+    compile files('libs/zxing.jar')
 }
 
 repositories {
