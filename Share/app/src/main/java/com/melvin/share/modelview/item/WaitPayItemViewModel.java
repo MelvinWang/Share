@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.ProductInfoActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitPayOrderInformationActivity;
 
 /**
  * Created Time: 2016/8/4.
@@ -26,7 +27,7 @@ public class WaitPayItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-        context.startActivity(new Intent(context, ProductInfoActivity.class));
+        context.startActivity(new Intent(context, WaitPayOrderInformationActivity.class));
     }
 
     public String getImgUrl() {

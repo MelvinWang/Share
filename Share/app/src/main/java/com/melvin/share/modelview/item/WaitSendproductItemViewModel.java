@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.ProductInfoActivity;
+import com.melvin.share.ui.activity.selfcenter.ApplyRefundActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitSendProductOrderInformationActivity;
 
 /**
  * Created Time: 2016/8/6
@@ -26,7 +28,10 @@ public class WaitSendproductItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-        context.startActivity(new Intent(context, ProductInfoActivity.class));
+        context.startActivity(new Intent(context, WaitSendProductOrderInformationActivity.class));
+    }
+    public void onApplyRefundClick(View view) {
+        context.startActivity(new Intent(context, ApplyRefundActivity.class));
     }
 
     public String getImgUrl() {

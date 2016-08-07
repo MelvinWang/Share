@@ -6,8 +6,9 @@ import android.widget.LinearLayout;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
+import com.melvin.share.databinding.ActivityRefundBinding;
 import com.melvin.share.databinding.ActivityWaitEvaluateBinding;
-import com.melvin.share.modelview.WaitEvaluateViewModel;
+import com.melvin.share.modelview.RefundViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 
@@ -20,15 +21,15 @@ import com.melvin.share.view.MyRecyclerView;
  */
 public class RefundActivity extends BaseActivity implements MyRecyclerView.LoadingListener {
 
-    private ActivityWaitEvaluateBinding binding;
+    private ActivityRefundBinding binding;
     private Context mContext = null;
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
-    private WaitEvaluateViewModel waitEvaluateViewModel;
+    private RefundViewModel refundViewModel;
 
     @Override
     protected void initView() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_wait_evaluate);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_refund);
         mContext = this;
         initWindow();
         initToolbar(binding.toolbar);
@@ -40,9 +41,9 @@ public class RefundActivity extends BaseActivity implements MyRecyclerView.Loadi
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
-        waitEvaluateViewModel = new WaitEvaluateViewModel(this, mRecyclerView, mRoot);
-        binding.setViewModel(waitEvaluateViewModel);
-        waitEvaluateViewModel.requestData();
+        refundViewModel = new RefundViewModel(this, mRecyclerView, mRoot);
+        binding.setViewModel(refundViewModel);
+        refundViewModel.requestData();
     }
 
     /**
@@ -50,7 +51,7 @@ public class RefundActivity extends BaseActivity implements MyRecyclerView.Loadi
      */
     @Override
     public void onRefresh() {
-        waitEvaluateViewModel.requestData();
+        refundViewModel.requestData();
         mRecyclerView.refreshComplete();
     }
 

@@ -6,8 +6,7 @@ import android.databinding.BaseObservable;
 import android.view.View;
 import android.widget.CompoundButton;
 
-import com.melvin.share.Utils.RxBus;
-import com.melvin.share.Utils.Utils;
+import com.melvin.share.Utils.RxCarBus;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 
@@ -78,8 +77,6 @@ public class ShopCarItemViewModel extends BaseObservable {
         setIsShowDone(false);
         notifyChange();
     }
-
-
     /**
      * 勾选状态判断,修改值后，以便操作之时TemplateViewModel可以利用到
      *
@@ -89,7 +86,7 @@ public class ShopCarItemViewModel extends BaseObservable {
         return new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                RxBus.get().post("hello"+isChecked);
+                RxCarBus.get().post("hello"+isChecked);
             }
         };
     }

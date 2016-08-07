@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/white"
+        android:background="@drawable/list_background"
         android:orientation="vertical"
         android:onClick="@{viewModel.onItemClick}"
         android:padding="4dp">
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="待评价"
+                android:text="已收货"
                 android:textColor="@color/app_common_red" />
         </RelativeLayout>
 
@@ -53,7 +53,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/list_background">
+           >
 
 
             <ImageView
@@ -171,6 +171,8 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:onClick="@{viewModel.onEvaluateClick}"
+                android:id="@+id/pay"
                 style="@style/CircularBtnStyle"
                 android:layout_width="100dp"
                 android:layout_height="45dp"
@@ -181,6 +183,20 @@
                 android:background="@drawable/btn_rectangle_withradus"
                 android:text="评价"
                 android:textColor="@color/app_common_red"
+                android:textSize="15sp" />
+
+            <Button
+                android:onClick="@{viewModel.onLookLogisticsClick}"
+                style="@style/CircularBtnStyle"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toLeftOf="@id/pay"
+                android:background="@drawable/btn_rectangle_withradus999"
+                android:text="查看物流"
+                android:textColor="@color/color_999"
                 android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>

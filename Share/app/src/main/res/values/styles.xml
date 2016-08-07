@@ -75,8 +75,8 @@
 
     <!-- 圆角样式按钮框-->
     <style name="CircularBtnStyle">
-        <item name="android:paddingBottom">13dp</item>
-        <item name="android:paddingTop">13dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">12dp</item>
         <item name="android:background">@drawable/btn_solid_redbackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

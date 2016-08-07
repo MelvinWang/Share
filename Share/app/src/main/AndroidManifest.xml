@@ -60,6 +60,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
+            android:name=".ui.activity.common.PhoneLoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
             android:name=".ui.activity.common.RegisterFirstActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
@@ -73,6 +77,10 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name=".ui.activity.common.AmendPhoneActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".ui.activity.common.ForgetPasswordActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
@@ -120,6 +128,42 @@
         <activity
             android:name=".ui.activity.selfcenter.ManageAddressActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.selfcenter.QueryHelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.selfcenter.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.selfcenter.NewAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".ui.activity.selfcenter.MessageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.selfcenter.LogisticsInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.selfcenter.ApplyRefundActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.activity.selfcenter.WaitPayOrderInformationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.selfcenter.WaitSendProductOrderInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.selfcenter.WaitReceiveProductOrderInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.selfcenter.WaitEvaluateOrderInformationActivity"
+            android:screenOrientation="portrait" />
 
 
         <activity
@@ -144,6 +188,10 @@
             android:name=".ui.activity.ShopInformationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".ui.activity.ShoppingCarEditActivity"
+            android:screenOrientation="portrait" />
 
         <!-- 扫描页面 -->
         <activity

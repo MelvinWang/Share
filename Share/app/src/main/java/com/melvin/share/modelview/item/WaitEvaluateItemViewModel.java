@@ -6,7 +6,10 @@ import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.OderEvaluateActivity;
 import com.melvin.share.ui.activity.ProductInfoActivity;
+import com.melvin.share.ui.activity.selfcenter.LogisticsInfoActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitEvaluateOrderInformationActivity;
 
 /**
  * Created Time: 2016/8/6
@@ -26,7 +29,15 @@ public class WaitEvaluateItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-        context.startActivity(new Intent(context, ProductInfoActivity.class));
+        context.startActivity(new Intent(context, WaitEvaluateOrderInformationActivity.class));
+    }
+
+    public void onLookLogisticsClick(View view) {
+        context.startActivity(new Intent(context, LogisticsInfoActivity.class));
+    }
+
+    public void onEvaluateClick(View view) {
+        context.startActivity(new Intent(context, OderEvaluateActivity.class));
     }
 
     public String getImgUrl() {

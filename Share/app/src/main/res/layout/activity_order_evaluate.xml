@@ -49,7 +49,7 @@
                 app:adapter="@{viewModel.adapter}"
                 app:data="@{viewModel.data}"
                 app:layoutManager="@{viewModel.linearLayoutManager}"
-                tools:listitem="@layout/search_product_item" />
+                tools:listitem="@layout/order_evaluate_item" />
         </LinearLayout>
     </ScrollView>
 </layout>

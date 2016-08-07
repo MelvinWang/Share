@@ -86,7 +86,7 @@
                         android:id="@+id/user_valinumber"
                         style="@style/CircularEditStyle"
                         android:layout_height="50dp"
-                        android:drawableLeft="@mipmap/validate"
+                        android:drawableLeft="@mipmap/cerification_img"
                         android:drawablePadding="20dp"
                         android:hint="验证码"
                         android:paddingLeft="20dp"

@@ -7,12 +7,15 @@ import android.view.View;
 
 import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.ProductInfoActivity;
+import com.melvin.share.ui.activity.selfcenter.ApplyRefundActivity;
+import com.melvin.share.ui.activity.selfcenter.LogisticsInfoActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitReceiveProductOrderInformationActivity;
 
 /**
  * Created Time: 2016/8/6
- * <p>
+ * <p/>
  * Author:Melvin
- * <p>
+ * <p/>
  * 功能：待收货页面item的ViewModel
  */
 public class WaitReceiveProductItemViewModel extends BaseObservable {
@@ -26,7 +29,15 @@ public class WaitReceiveProductItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-        context.startActivity(new Intent(context, ProductInfoActivity.class));
+        context.startActivity(new Intent(context, WaitReceiveProductOrderInformationActivity.class));
+    }
+
+    public void onApplyRefundClick(View view) {
+        context.startActivity(new Intent(context, ApplyRefundActivity.class));
+    }
+
+    public void onLookLogisticsClick(View view) {
+        context.startActivity(new Intent(context, LogisticsInfoActivity.class));
     }
 
     public String getImgUrl() {

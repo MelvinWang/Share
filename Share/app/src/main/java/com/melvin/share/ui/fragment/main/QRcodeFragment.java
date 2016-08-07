@@ -69,19 +69,32 @@ public class QRcodeFragment extends BaseFragment {
 
     };
 
+
     @Override
     public void onStart() {
         super.onStart();
+        LogUtils.i("QRcodeFragment+onStart");
         RxBus.get().register(this); //注册
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LogUtils.i("QRcodeFragment+onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        LogUtils.i("QRcodeFragment+onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        LogUtils.i("QRcodeFragment+onStop");
         RxBus.get().unregister(this);//销毁
     }
-
-    //接收一个消息，消息区别是通过参数，因此这里接收一个post事件，参数为字串时，这里就可以收到。
     @Subscribe
     public void qrcode(String qrcodeString) {
         //显示窗口,设置layout在PopupWindow中显示的位置

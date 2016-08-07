@@ -74,10 +74,43 @@
                     android:textColorHint="@color/color_999"
                     android:textSize="@dimen/page_18" />
 
+                <RelativeLayout
+                    android:id="@+id/rl_valinumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/confirm_password"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/user_valinumber"
+                        style="@style/CircularEditStyle"
+                        android:layout_height="50dp"
+                        android:drawableLeft="@mipmap/cerification_img"
+                        android:drawablePadding="20dp"
+                        android:hint="验证码"
+                        android:paddingLeft="20dp"
+                        android:textColor="@color/color_999"
+                        android:textColorHint="@color/color_999"
+                        android:textSize="@dimen/page_18" />
+
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:text="获取验证码"
+                        android:textColor="@color/color_999"
+                        android:textSize="@dimen/page_18" />
+
+                </RelativeLayout>
+
                 <Button
                     android:id="@+id/done"
                     style="@style/CircularBtnStyle"
-                    android:layout_below="@id/confirm_password"
+                    android:layout_below="@id/rl_valinumber"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="130dp"

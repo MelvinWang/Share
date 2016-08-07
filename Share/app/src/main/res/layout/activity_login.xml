@@ -87,9 +87,9 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@mipmap/password"
-                        android:drawablePadding="20dp"
-                        android:hint="请输入右边验证码"
+                        android:drawableLeft="@mipmap/cerification_img"
+                        android:drawablePadding="10dp"
+                        android:hint="请输入图片中验证码"
                         android:paddingLeft="20dp"
                         android:textColor="@color/color_999"
                         android:textColorHint="@color/color_999"
@@ -112,18 +112,20 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp">
 
-                    <CheckBox
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_alignParentLeft="true"
-                        android:text="记住密码" />
-
+                        android:onClick="forgetPassword"
+                        android:text="忘记密码?" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_alignParentRight="true"
-                        android:text="忘记密码?" />
+                        android:onClick="phoneLogin"
+                        android:text="手机验证登录"
+                        android:textColor="@color/app_common_red" />
                 </RelativeLayout>
 
                 <Button

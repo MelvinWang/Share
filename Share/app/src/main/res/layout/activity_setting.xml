@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginTop="20dp"
-            android:background="@color/white">
+            android:background="@drawable/btn_rectangle_normal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,9 +81,11 @@
                 android:layout_centerVertical="true"
                 android:text="宝宝" />
         </RelativeLayout>
+
         <TextView
             style="@style/CommonLine"
             android:layout_marginTop="0dp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +115,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/btn_rectangle_normal"
+            android:onClick="amendPhone"
             android:padding="20dp">
 
             <TextView
@@ -133,11 +136,11 @@
                 android:src="@mipmap/self_center_back" />
 
             <TextView
-                android:layout_toLeftOf="@id/iv_back"
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/iv_back"
                 android:text="13883387333" />
         </RelativeLayout>
 
@@ -148,7 +151,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/btn_rectangle_normal"
+            android:onClick="amendPassword"
             android:padding="20dp">
 
             <TextView

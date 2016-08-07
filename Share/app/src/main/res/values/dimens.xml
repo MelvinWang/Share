@@ -5,7 +5,9 @@
 
 
     <!--页面标题-->
+    <dimen name="page_20">20sp</dimen>
     <dimen name="page_18">18sp</dimen>
+    <dimen name="page_17">17sp</dimen>
     <dimen name="page_15">15sp</dimen>
     <dimen name="page_14">14sp</dimen>
     <dimen name="page_12">12sp</dimen>

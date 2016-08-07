@@ -11,23 +11,26 @@ import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.databinding.FragmentSelfBinding;
 import com.melvin.share.ui.activity.common.LoginActivity;
+import com.melvin.share.ui.activity.selfcenter.AboutUsActivity;
 import com.melvin.share.ui.activity.selfcenter.ManageAddressActivity;
 import com.melvin.share.ui.activity.selfcenter.MyRebateActivity;
 import com.melvin.share.ui.activity.selfcenter.OpenshopFirstActivity;
 import com.melvin.share.ui.activity.selfcenter.ProductCollectionActivity;
+import com.melvin.share.ui.activity.selfcenter.QueryHelpActivity;
 import com.melvin.share.ui.activity.selfcenter.RefundActivity;
 import com.melvin.share.ui.activity.selfcenter.ScanHistoryActivity;
 import com.melvin.share.ui.activity.selfcenter.SettingActivity;
 import com.melvin.share.ui.activity.selfcenter.ShopCollectionActivity;
+import com.melvin.share.ui.activity.selfcenter.WaitEvaluateActivity;
 import com.melvin.share.ui.activity.selfcenter.WaitPayActivity;
 import com.melvin.share.ui.activity.selfcenter.WaitReceiveProductActivity;
 import com.melvin.share.ui.activity.selfcenter.WaitSendProductActivity;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/17
- * <p>
+ * <p/>
  * 描述：个人中心
  */
 public class SelfFragment extends BaseFragment implements View.OnClickListener {
@@ -100,7 +103,6 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.click_order_examine://订单
-
                 break;
             case R.id.click_wait_pay://待付款
                 intent.setClass(mContext, WaitPayActivity.class);
@@ -112,6 +114,10 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.click_wait_receive_product://待收货
                 intent.setClass(mContext, WaitReceiveProductActivity.class);
+                mContext.startActivity(intent);
+                break;
+            case R.id.click_wait_evaluate://待评价
+                intent.setClass(mContext, WaitEvaluateActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.click_refund://退款
@@ -138,10 +144,12 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 break;
 
             case R.id.click_query_help://咨询与帮助
-
+                intent.setClass(mContext, QueryHelpActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.click_about_us://关于我们
-
+                intent.setClass(mContext, AboutUsActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.click_setting://设置
                 intent.setClass(mContext, SettingActivity.class);

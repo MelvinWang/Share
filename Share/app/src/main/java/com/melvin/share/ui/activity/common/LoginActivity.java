@@ -13,9 +13,13 @@ import com.melvin.share.ui.activity.common.BaseActivity;
 
 
 /**
- * Created by Administrator on 2016/1/13.
- * 登录页面
+ * Created Time: 2016/7/17.
+ * <p/>
+ * Author:Melvin
+ * <p/>
+ * 功能：登录页面
  */
+
 public class LoginActivity extends BaseActivity {
     private ActivityLoginBinding binding;
     private Context context;
@@ -48,6 +52,25 @@ public class LoginActivity extends BaseActivity {
         iv_showCode.setImageBitmap(CodeUtils.getInstance().createBitmap());
         realCode = CodeUtils.getInstance().getCode();
     }
+
+    /**
+     * 忘记密码
+     *
+     * @param view
+     */
+    public void forgetPassword(View view) {
+        startActivity(new Intent(context, ForgetPasswordActivity.class));
+    }
+
+    /**
+     * 手机验证登录
+     *
+     * @param view
+     */
+    public void phoneLogin(View view) {
+        startActivity(new Intent(context, PhoneLoginActivity.class));
+    }
+
 
     /**
      * 注册
