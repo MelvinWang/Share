@@ -2,6 +2,7 @@ package com.melvin.share.ui.activity.selfcenter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -11,12 +12,13 @@ import com.melvin.share.databinding.ActivityWaitSendProdOrderInfoBinding;
 import com.melvin.share.modelview.WaitSendProOrderInfoViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
+import com.melvin.share.view.UrgeBillDialog;
 
 /**
  * Author: Melvin
- * <p/>
+ * <p>
  * Data： 2016/8/7
- * <p/>
+ * <p>
  * 描述： 待发货订单信息
  */
 public class WaitSendProductOrderInformationActivity extends BaseActivity implements MyRecyclerView.LoadingListener {
@@ -63,4 +65,15 @@ public class WaitSendProductOrderInformationActivity extends BaseActivity implem
     public void onLoadMore() {
 
     }
+
+    /**
+     * 催单
+     */
+    public void urgeBill(View v) {
+        final UrgeBillDialog dialog = new UrgeBillDialog(mContext);
+        dialog.setContentView(null);
+        dialog.show();
+    }
+
+
 }

@@ -171,7 +171,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
-            android:name=".ui.activity.ConfirmOrderActivity"
+            android:name=".ui.activity.shopcar.ConfirmOrderActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.OderEvaluateActivity"
@@ -190,7 +190,7 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
         <activity
-            android:name=".ui.activity.ShoppingCarEditActivity"
+            android:name=".ui.activity.shopcar.ShoppingCarEditActivity"
             android:screenOrientation="portrait" />
 
         <!-- 扫描页面 -->

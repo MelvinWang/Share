@@ -11,4 +11,5 @@
     <dimen name="page_15">15sp</dimen>
     <dimen name="page_14">14sp</dimen>
     <dimen name="page_12">12sp</dimen>
+    <dimen name="page_10">10sp</dimen>
 </resources>

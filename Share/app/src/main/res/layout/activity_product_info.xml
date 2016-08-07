@@ -52,7 +52,7 @@
                 android:scrollbars="none"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                        <android.support.v4.view.ViewPager
+                <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -82,23 +82,23 @@
                 android:src="@mipmap/productinfo_collection_n" />
 
             <Button
-                android:onClick="joinShopCar"
                 style="@style/CircularBtnStyle"
                 android:layout_width="0dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="3"
                 android:background="@drawable/btn_rectangle_withradus"
+                android:onClick="joinShopCar"
                 android:text="加入购物车"
                 android:textColor="@color/app_common_red"
                 android:textSize="11sp" />
 
             <Button
-                android:onClick="purchaseNow"
                 style="@style/CircularBtnStyle"
                 android:layout_width="0dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="3"
                 android:background="@drawable/btn_redrectangle_withradus"
+                android:onClick="purchaseNow"
                 android:text="立即购买"
                 android:textColor="@color/white"
                 android:textSize="11sp" />

@@ -170,6 +170,7 @@
 
             <Button
                 android:id="@+id/pay"
+                android:onClick="@{viewModel.urgeBill}"
                 style="@style/CircularBtnStyle"
                 android:layout_width="100dp"
                 android:layout_height="45dp"

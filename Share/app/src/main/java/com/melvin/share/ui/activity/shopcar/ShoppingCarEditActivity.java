@@ -1,4 +1,4 @@
-package com.melvin.share.ui.activity;
+package com.melvin.share.ui.activity.shopcar;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

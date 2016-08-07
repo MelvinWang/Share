@@ -9,10 +9,10 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.melvin.share.R;
-import com.melvin.share.Utils.Utils;
 import com.melvin.share.adapter.ProductInfoAdapter;
 import com.melvin.share.databinding.ActivityProductInfoBinding;
 import com.melvin.share.ui.activity.common.BaseActivity;
+import com.melvin.share.ui.activity.shopcar.ConfirmOrderActivity;
 import com.melvin.share.view.PurchasePopupWindow;
 
 /**

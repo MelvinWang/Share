@@ -9,12 +9,13 @@ import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 import com.melvin.share.ui.activity.selfcenter.ApplyRefundActivity;
 import com.melvin.share.ui.activity.selfcenter.WaitSendProductOrderInformationActivity;
+import com.melvin.share.view.UrgeBillDialog;
 
 /**
  * Created Time: 2016/8/6
- * <p>
+ * <p/>
  * Author:Melvin
- * <p>
+ * <p/>
  * 功能：待发货页面item的ViewModel
  */
 public class WaitSendproductItemViewModel extends BaseObservable {
@@ -30,8 +31,15 @@ public class WaitSendproductItemViewModel extends BaseObservable {
     public void onItemClick(View view) {
         context.startActivity(new Intent(context, WaitSendProductOrderInformationActivity.class));
     }
+
     public void onApplyRefundClick(View view) {
         context.startActivity(new Intent(context, ApplyRefundActivity.class));
+    }
+
+    public void urgeBill(View view) {
+        final UrgeBillDialog dialog = new UrgeBillDialog(context);
+        dialog.setContentView(null);
+        dialog.show();
     }
 
     public String getImgUrl() {

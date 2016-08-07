@@ -122,22 +122,22 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:gravity="right"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp">
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
 
                     <TextView
                         android:id="@+id/freight_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:text="运费:"
                         android:textColor="@color/color_333" />
 
@@ -145,8 +145,8 @@
                         android:id="@+id/freight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@id/freight_text"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
                         android:text="￥200.00"
                         android:textColor="@color/color_333" />
                 </RelativeLayout>
@@ -159,15 +159,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:gravity="right"
-                    android:paddingBottom="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp">
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
 
                     <TextView
                         android:id="@+id/total_fee_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:text="订单总价:"
                         android:textColor="@color/color_333" />
 
@@ -175,11 +174,78 @@
                         android:id="@+id/total_fee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@id/total_fee_text"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
                         android:text="￥200.00"
                         android:textColor="@color/color_333" />
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/pay_alipay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="50dp"
+                        android:text="支付宝"
+                        android:textColor="@color/color_333" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:button="@drawable/dot_select"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/pay_wechat" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="50dp"
+                        android:text="微信支付"
+                        android:textColor="@color/color_333" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:button="@drawable/dot_select"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp" />
+                </RelativeLayout>
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

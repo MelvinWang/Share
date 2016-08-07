@@ -13,15 +13,14 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
-import com.melvin.share.Utils.RxBus;
 import com.melvin.share.Utils.RxCarBus;
 import com.melvin.share.adapter.ShopCarAdapter;
 import com.melvin.share.databinding.FragmentShoppingCarBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
-import com.melvin.share.ui.activity.ShoppingCarEditActivity;
+import com.melvin.share.ui.activity.shopcar.ConfirmOrderActivity;
+import com.melvin.share.ui.activity.shopcar.ShoppingCarEditActivity;
 import com.melvin.share.view.MyRecyclerView;
-import com.melvin.share.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +58,7 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         binding.ShopCarEdit.setOnClickListener(this);
+        binding.gotoPay.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +66,9 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
         switch (v.getId()) {
             case R.id._shop_car_edit:
                 startActivity(new Intent(mContext, ShoppingCarEditActivity.class));
+                break;
+            case R.id.goto_pay:
+                startActivity(new Intent(mContext, ConfirmOrderActivity.class));
                 break;
         }
     }
