@@ -325,6 +325,7 @@
                     android:background="@color/white">
 
                     <Button
+                        android:onClick="goToPay"
                         android:id="@+id/pay"
                         style="@style/CircularBtnStyle"
                         android:layout_width="100dp"
@@ -337,6 +338,7 @@
                         android:textSize="@dimen/page_14" />
 
                     <Button
+                        android:onClick="cancelPay"
                         style="@style/CircularBtnStyle"
                         android:layout_width="100dp"
                         android:layout_height="40dp"

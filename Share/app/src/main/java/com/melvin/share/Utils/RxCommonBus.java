@@ -6,9 +6,9 @@ import com.hwangjr.rxbus.Bus;
  * <p>
  * Data： 2016/8/6
  * <p>
- * 描述：购物车
+ * 描述：通用在activity
  */
-public final class RxCarBus {
+public final class RxCommonBus {
     private static Bus mBus;
 
     public synchronized static Bus get() {

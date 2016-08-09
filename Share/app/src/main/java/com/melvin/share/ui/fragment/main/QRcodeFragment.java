@@ -18,7 +18,7 @@ import com.melvin.share.Utils.RxBus;
 import com.melvin.share.Utils.Utils;
 import com.melvin.share.adapter.QrcodeAdapter;
 import com.melvin.share.databinding.FragmentQrCodeBinding;
-import com.melvin.share.view.SelectPicPopupWindow;
+import com.melvin.share.popwindow.SelectPicPopupWindow;
 import com.melvin.share.zxing.encoding.EncodingHandler;
 
 /**

@@ -312,7 +312,7 @@
                     android:background="@color/white">
 
                     <Button
-                        android:id="@+id/pay"
+                        android:onClick="confirmReceiveProduct"
                         style="@style/CircularBtnStyle"
                         android:layout_width="100dp"
                         android:layout_height="40dp"

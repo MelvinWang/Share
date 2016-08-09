@@ -1,4 +1,4 @@
-package com.melvin.share.view;
+package com.melvin.share.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.melvin.share.R;
@@ -57,9 +56,9 @@ public class OrderCancelDialog extends Dialog implements View.OnClickListener {
     }
 
     public interface OnCliclListener {
+        void confirm();
         void cancel();
 
-        void confirm();
     }
 
     public OnCliclListener mOnClickListener;

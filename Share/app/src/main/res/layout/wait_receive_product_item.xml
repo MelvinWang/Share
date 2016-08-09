@@ -196,6 +196,7 @@
                 android:textColor="@color/color_999"
                 android:textSize="15sp" />
                 <Button
+                    android:onClick="@{viewModel.confirmReceiveProduct}"
                 style="@style/CircularBtnStyle"
                 android:layout_width="100dp"
                 android:layout_height="45dp"

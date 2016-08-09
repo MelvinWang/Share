@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 
+import com.melvin.share.Utils.Utils;
+import com.melvin.share.dialog.ConfirmReceiveDialog;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 import com.melvin.share.ui.activity.selfcenter.ApplyRefundActivity;
@@ -13,9 +15,9 @@ import com.melvin.share.ui.activity.selfcenter.WaitReceiveProductOrderInformatio
 
 /**
  * Created Time: 2016/8/6
- * <p/>
+ * <p>
  * Author:Melvin
- * <p/>
+ * <p>
  * 功能：待收货页面item的ViewModel
  */
 public class WaitReceiveProductItemViewModel extends BaseObservable {
@@ -47,5 +49,26 @@ public class WaitReceiveProductItemViewModel extends BaseObservable {
     public void setEntity(User user) {
         this.user = user;
         notifyChange();
+    }
+
+    /**
+     * 确认收货
+     */
+    public void confirmReceiveProduct(View v) {
+        final ConfirmReceiveDialog dialog = new ConfirmReceiveDialog(context);
+        dialog.setContentView(null);
+        dialog.show();
+        dialog.setOnClickListener(new ConfirmReceiveDialog.OnCliclListener() {
+            @Override
+            public void confirm() {
+                Utils.showToast(context, "confirm");
+            }
+
+            @Override
+            public void cancel() {
+                Utils.showToast(context, "cancel");
+
+            }
+        });
     }
 }

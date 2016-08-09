@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:onClick="@{viewModel.onItemClick}"
         android:background="@drawable/list_background"
+        android:onClick="@{viewModel.onItemClick}"
         android:orientation="vertical"
         android:padding="4dp">
 
@@ -52,8 +52,7 @@
             android:layout_height="100dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            >
+            android:layout_marginTop="5dp">
 
 
             <ImageView
@@ -171,7 +170,6 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:onClick="@{viewModel.onItemClick}"
                 android:id="@+id/pay"
                 style="@style/CircularBtnStyle"
                 android:layout_width="100dp"
@@ -181,6 +179,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_rectangle_withradus"
+                android:onClick="@{viewModel.goToPay}"
                 android:text="付款"
                 android:textColor="@color/app_common_red"
                 android:textSize="15sp" />
@@ -194,6 +193,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_toLeftOf="@id/pay"
                 android:background="@drawable/btn_rectangle_withradus999"
+                android:onClick="@{viewModel.cancelPay}"
                 android:text="取消订单"
                 android:textColor="@color/color_999"
                 android:textSize="15sp" />

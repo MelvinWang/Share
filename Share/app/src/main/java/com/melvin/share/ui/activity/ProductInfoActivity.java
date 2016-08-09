@@ -13,7 +13,7 @@ import com.melvin.share.adapter.ProductInfoAdapter;
 import com.melvin.share.databinding.ActivityProductInfoBinding;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.ui.activity.shopcar.ConfirmOrderActivity;
-import com.melvin.share.view.PurchasePopupWindow;
+import com.melvin.share.popwindow.PurchasePopupWindow;
 
 /**
  * Author: Melvin

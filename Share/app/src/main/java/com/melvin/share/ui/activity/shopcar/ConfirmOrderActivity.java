@@ -2,11 +2,13 @@ package com.melvin.share.ui.activity.shopcar;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityConfirmOrderBinding;
+import com.melvin.share.dialog.PaySuccessDialog;
 import com.melvin.share.modelview.ConfirmOrderViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
@@ -37,13 +39,19 @@ public class ConfirmOrderActivity extends BaseActivity implements MyRecyclerView
     }
 
     private void ininData() {
-        mRoot=binding.root;
+        mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         confirmOrderViewModel = new ConfirmOrderViewModel(this, mRecyclerView, mRoot);
         binding.setViewModel(confirmOrderViewModel);
         confirmOrderViewModel.requestData();
+    }
+
+    public void goToPay(View v) {
+        final PaySuccessDialog dialog = new PaySuccessDialog(mContext);
+        dialog.setContentView(null);
+        dialog.show();
     }
 
     /**

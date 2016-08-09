@@ -1,4 +1,4 @@
-package com.melvin.share.view;
+package com.melvin.share.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

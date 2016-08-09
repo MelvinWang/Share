@@ -1,4 +1,4 @@
-package com.melvin.share.view;
+package com.melvin.share.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -56,9 +56,9 @@ public class ConfirmReceiveDialog extends Dialog implements View.OnClickListener
     }
 
     public interface OnCliclListener {
+        void confirm();
         void cancel();
 
-        void confirm();
     }
 
     public OnCliclListener mOnClickListener;

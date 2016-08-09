@@ -6,10 +6,9 @@ import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.melvin.share.model.User;
-import com.melvin.share.ui.activity.ProductInfoActivity;
 import com.melvin.share.ui.activity.selfcenter.ApplyRefundActivity;
 import com.melvin.share.ui.activity.selfcenter.WaitSendProductOrderInformationActivity;
-import com.melvin.share.view.UrgeBillDialog;
+import com.melvin.share.dialog.UrgeBillDialog;
 
 /**
  * Created Time: 2016/8/6
