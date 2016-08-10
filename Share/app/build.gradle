@@ -44,6 +44,7 @@ dependencies {
     }
     compile files('libs/zbardecoder.jar')
     compile files('libs/zxing.jar')
+    compile project(':WheelPicker')
 }
 
 repositories {

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Share.iml" filepath="$PROJECT_DIR$/Share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WheelPicker/WheelPicker.iml" filepath="$PROJECT_DIR$/WheelPicker/WheelPicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

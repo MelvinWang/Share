@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="15dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="15dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_rectangle_normal"
             android:onClick="amendSex"
-            android:padding="15dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -153,8 +153,82 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_rectangle_normal"
+            android:onClick="amendBirthDay"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="生日"
+                android:textSize="18sp" />
+
+
+            <ImageView
+                android:id="@+id/birth_day_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/self_center_back" />
+
+            <TextView
+                android:id="@+id/tv_birth_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/birth_day_back"
+                android:text="2016-8-10" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/CommonLine"
+            android:layout_marginTop="0dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rectangle_normal"
+            android:onClick="amendAddress"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="居住地"
+                android:textSize="18sp" />
+
+
+            <ImageView
+                android:id="@+id/address_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/self_center_back" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/address_back"
+                android:text="四川成都" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/CommonLine"
+            android:layout_marginTop="0dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rectangle_normal"
             android:onClick="amendPhone"
-            android:padding="15dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -190,7 +264,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_rectangle_normal"
             android:onClick="amendPassword"
-            android:padding="15dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"

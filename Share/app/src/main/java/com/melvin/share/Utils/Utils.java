@@ -11,6 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.aigestudio.wheelpicker.widget.curved.WheelDatePicker;
+
+import java.util.Date;
+
 /**
  * Created Time: 2016/7/17.
  * <p>
@@ -180,7 +184,20 @@ public class Utils {
         }
         return action;
     }
-
+    public static WheelDatePicker createWheelDate(Context context, int padding, int textSize, int itemSpace) {
+        WheelDatePicker wheelDatePicker = new WheelDatePicker(context);
+        wheelDatePicker.setPadding(padding, 0, padding, 0);
+        wheelDatePicker.setBackgroundColor(0xffffff);
+        wheelDatePicker.setTextColor(0xFF7787C5);
+        wheelDatePicker.setCurrentTextColor(0xFF7774B7);
+        wheelDatePicker.setLabelColor(0xFF7774B7);
+        wheelDatePicker.setTextSize(textSize);
+        wheelDatePicker.setItemSpace(itemSpace);
+        String dateLong = DateUtil.getDateLong(new Date());
+        String[] split = dateLong.split("-");
+        wheelDatePicker.setCurrentDate(Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
+        return wheelDatePicker;
+    }
 
 
 

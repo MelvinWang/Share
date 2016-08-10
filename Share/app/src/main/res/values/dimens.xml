@@ -4,6 +4,15 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
 
+    <!--时间控件-->
+    <dimen name="WheelItemSpace">18dp</dimen>
+    <dimen name="MyWheelPadding">20dp</dimen>
+    <dimen name="WheelTextSize">20sp</dimen>
+    <dimen name="WheelLabelTextSize">12sp</dimen>
+    <dimen name="MyTextSizeLarge">20sp</dimen>
+    <dimen name="MyItemSpaceLarge">20dp</dimen>
+
+
     <!--页面标题-->
     <dimen name="page_20">20sp</dimen>
     <dimen name="page_18">18sp</dimen>
