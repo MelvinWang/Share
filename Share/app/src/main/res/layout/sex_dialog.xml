@@ -74,6 +74,7 @@
                 android:gravity="center_horizontal"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
+                android:background="@drawable/btn_rectangle_normal"
                 android:text="男"
                 android:textColor="@drawable/btn_tab_text_selector" />
 
@@ -89,6 +90,7 @@
                 android:button="@null"
                 android:gravity="center_horizontal"
                 android:paddingBottom="10dp"
+                android:background="@drawable/btn_rectangle_normal"
                 android:paddingTop="10dp"
                 android:text="女"
                 android:textColor="@drawable/btn_tab_text_selector" />
@@ -102,6 +104,7 @@
                 android:id="@+id/sex_secret"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_rectangle_normal"
                 android:button="@null"
                 android:gravity="center_horizontal"
                 android:paddingBottom="10dp"

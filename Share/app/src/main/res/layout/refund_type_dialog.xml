@@ -75,6 +75,7 @@
                 android:gravity="center_horizontal"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
+                android:background="@drawable/btn_rectangle_normal"
                 android:text="我要退款"
                 android:textSize="@dimen/page_18"
                 android:textColor="@drawable/btn_tab_text_selector" />
@@ -92,6 +93,7 @@
                 android:gravity="center_horizontal"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
+                android:background="@drawable/btn_rectangle_normal"
                 android:text="我要退货"
                 android:textSize="@dimen/page_18"
                 android:textColor="@drawable/btn_tab_text_selector" />

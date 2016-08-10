@@ -74,14 +74,12 @@ public class ProductEvaluateFragment extends BaseFragment implements MyRecyclerV
      */
     private void requestData() {
         List list = new ArrayList<>();
-        User user = new User();
-        user.password = "1";
-        user.username = "2";
-        list.add(user);
-        User user1 = new User();
-        user1.password = "3";
-        user1.username = "4";
-        list.add(user1);
+        for (int i = 0; i < 10; i++) {
+            User user = new User();
+            user.password = i+"";
+            user.username = i+"";
+            list.add(user);
+        }
         data.addAll(list);
         productEvaluateAdapter.notifyDataSetChanged();
 

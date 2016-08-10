@@ -76,13 +76,12 @@ public class AllProductFragment extends BaseFragment implements NoRefreshRecycle
      */
     private void requestData() {
         List list = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             User user = new User();
-            user.password = i+"";
-            user.username = i+"";
+            user.password = i + "";
+            user.username = i + "";
             list.add(user);
         }
-        data.addAll(list);
         data.addAll(list);
         allProductAdapter.notifyDataSetChanged();
 

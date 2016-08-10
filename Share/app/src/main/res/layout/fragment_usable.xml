@@ -6,15 +6,11 @@
 
     </data>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/f2f2f2">
-
         <LinearLayout
             android:id="@+id/root"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/f2f2f2"
             android:orientation="vertical">
 
             <TextView
@@ -49,6 +45,7 @@
                     android:textSize="15sp" />
 
                 <Button
+                    android:id="@+id/deposit"
                     style="@style/CircularBtnStyle"
                     android:layout_width="160dp"
                     android:background="@drawable/btn_rectangle_withradus"
@@ -64,5 +61,4 @@
                 android:layout_marginTop="10dp"
                 tools:listitem="@layout/usable_item" />
         </LinearLayout>
-    </ScrollView>
 </layout>

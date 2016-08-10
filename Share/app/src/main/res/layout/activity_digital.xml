@@ -11,15 +11,11 @@
 
     </data>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/f2f2f2">
-
         <LinearLayout
             android:id="@+id/root"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/f2f2f2"
             android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
@@ -97,5 +93,4 @@
                 app:layoutManager="@{viewModel.linearLayoutManager}"
                 tools:listitem="@layout/digital_item" />
         </LinearLayout>
-    </ScrollView>
 </layout>

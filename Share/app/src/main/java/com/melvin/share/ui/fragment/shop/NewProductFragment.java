@@ -75,7 +75,7 @@ public class NewProductFragment extends BaseFragment implements NoRefreshRecycle
      */
     private void requestData() {
         List list = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             User user = new User();
             user.password = i + "";
             user.username = i + "";
