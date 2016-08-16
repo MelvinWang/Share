@@ -33,16 +33,28 @@ public class QRcodeFragment extends BaseFragment {
     SelectPicPopupWindow menuWindow;
     private FragmentQrCodeBinding binding;
     private Context mContext;
+    private View root;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_qr_code, container, false);
-        mContext = getActivity();
-        menuWindow = new SelectPicPopupWindow((Activity) mContext, itemsOnClick);
-        LogUtils.i("QRcodeFragment+initView");
-        initTable();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            menuWindow = new SelectPicPopupWindow((Activity) mContext, itemsOnClick);
+            LogUtils.i("QRcodeFragment+initView");
+            initTable();
+            root = binding.getRoot();
+        }
+        return root;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        LogUtils.i("QRcodeFragment+onStart");
+        RxBus.get().register(this); //注册
+    }
+
 
     //为弹出窗口实现监听类
     private View.OnClickListener itemsOnClick = new View.OnClickListener() {
@@ -71,13 +83,6 @@ public class QRcodeFragment extends BaseFragment {
 
 
     @Override
-    public void onStart() {
-        super.onStart();
-        LogUtils.i("QRcodeFragment+onStart");
-        RxBus.get().register(this); //注册
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         LogUtils.i("QRcodeFragment+onResume");
@@ -95,6 +100,7 @@ public class QRcodeFragment extends BaseFragment {
         LogUtils.i("QRcodeFragment+onStop");
         RxBus.get().unregister(this);//销毁
     }
+
     @Subscribe
     public void qrcode(String qrcodeString) {
         //显示窗口,设置layout在PopupWindow中显示的位置

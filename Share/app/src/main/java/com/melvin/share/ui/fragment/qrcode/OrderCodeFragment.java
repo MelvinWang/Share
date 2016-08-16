@@ -21,9 +21,9 @@ import java.util.List;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/21
- * <p>
+ * <p/>
  * 描述：订单二维码
  */
 public class OrderCodeFragment extends BaseFragment implements MyRecyclerView.LoadingListener {
@@ -33,16 +33,25 @@ public class OrderCodeFragment extends BaseFragment implements MyRecyclerView.Lo
     private MyRecyclerView mRecyclerView;
     private OrderCodeAdapter orderCodeAdapter;
     private List<BaseModel> data = new ArrayList<>();
+    private View root;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_order_code, container, false);
-        mContext = getActivity();
-        initData();
-        initAdapter();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            initData();
+            initAdapter();
+            root = binding.getRoot();
+            requestData();
+        }
+        return root;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
 
     /**
@@ -66,21 +75,16 @@ public class OrderCodeFragment extends BaseFragment implements MyRecyclerView.Lo
         mRecyclerView.setAdapter(orderCodeAdapter);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        requestData();
-    }
 
     /**
      * 请求网络
      */
     private void requestData() {
         List list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             User user = new User();
-            user.password = i+"";
-            user.username = i+"";
+            user.password = i + "";
+            user.username = i + "";
             list.add(user);
         }
         data.addAll(list);

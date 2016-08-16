@@ -42,9 +42,15 @@ dependencies {
     compile('com.hwangjr.rxbus:rxbus:1.0.3') {
         exclude group: 'com.hwangjr.utils', module: 'timber'
     }
+    /*扫描*/
     compile files('libs/zbardecoder.jar')
     compile files('libs/zxing.jar')
+    /*时间控件*/
     compile project(':WheelPicker')
+    /*地图*/
+    compile files('libs/AMap_3DMap_V3.4.0_20160809.jar')
+    compile files('libs/AMap_Location_V2.8.0_20160811.jar')
+    compile files('libs/AMap_Search_V3.4.0_20160811.jar')
 }
 
 repositories {

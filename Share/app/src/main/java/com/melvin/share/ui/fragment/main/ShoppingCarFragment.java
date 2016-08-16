@@ -27,9 +27,9 @@ import java.util.List;
 
 /**
  * Author: Melvin
- * <p/>
+ * <p>
  * Data： 2016/7/17
- * <p/>
+ * <p>
  * 描述：购物车
  */
 public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.LoadingListener, View.OnClickListener {
@@ -39,15 +39,27 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
     private MyRecyclerView mRecyclerView;
     private ShopCarAdapter shopCarAdapter;
     private List<BaseModel> data = new ArrayList<>();
+    private View root;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shopping_car, container, false);
-        mContext = getActivity();
-        LogUtils.i("ShoppingCarFragment+initView");
-        initData();
-        initAdapter();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            LogUtils.i("ShoppingCarFragment+initView");
+            initData();
+            initAdapter();
+            root = binding.getRoot();
+            requestData();
+        }
+        return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        LogUtils.i("ShoppingCarFragment+onStart");
+        RxCarBus.get().register(this); //注册
     }
 
     /**
@@ -84,13 +96,6 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
         mRecyclerView.setAdapter(shopCarAdapter);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        LogUtils.i("ShoppingCarFragment+onStart");
-        RxCarBus.get().register(this); //注册
-        requestData();
-    }
 
     @Override
     public void onResume() {

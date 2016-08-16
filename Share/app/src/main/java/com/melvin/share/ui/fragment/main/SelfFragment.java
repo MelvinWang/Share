@@ -37,14 +37,18 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
 
     private FragmentSelfBinding binding;
     private Context mContext;
+    private View root;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_self, container, false);
-        mContext = getActivity();
-        LogUtils.i("SelfFragment+initView");
-        bingClick();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            LogUtils.i("SelfFragment+initView");
+            bingClick();
+            root = binding.getRoot();
+        }
+        return root;
     }
 
     /**

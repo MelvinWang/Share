@@ -2,8 +2,15 @@ package com.melvin.share.ui.fragment.factory;
 
 import android.support.v4.app.Fragment;
 
+import com.melvin.share.ui.fragment.main.HomeFragment;
+import com.melvin.share.ui.fragment.main.QRcodeFragment;
+import com.melvin.share.ui.fragment.main.SelfFragment;
+import com.melvin.share.ui.fragment.main.ShoppingCarFragment;
 import com.melvin.share.ui.fragment.qrcode.OrderCodeFragment;
 import com.melvin.share.ui.fragment.qrcode.ShopCodeFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created Time: 2016/7/21.
@@ -14,13 +21,22 @@ import com.melvin.share.ui.fragment.qrcode.ShopCodeFragment;
  */
 public class FragmentQrcodeFactory {
 
+    private static Map<Integer, Fragment> mFragments = new HashMap<Integer, Fragment>();
 
     public static Fragment createFragment(int position) {
         Fragment fragment = null;
-        if (position == 0) {
-            return fragment = new OrderCodeFragment();
-        } else
-            return fragment = new ShopCodeFragment();
+        fragment = mFragments.get(position);
+        if (fragment == null) {
+            if (position == 0) {
+                fragment = new OrderCodeFragment();
+            } else if (position == 1) {
+                fragment = new ShopCodeFragment();
+            }
+            if (fragment != null) {
+                mFragments.put(position, fragment);
+            }
+        }
+        return fragment;
     }
 
 }

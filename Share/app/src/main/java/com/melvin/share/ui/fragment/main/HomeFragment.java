@@ -25,6 +25,7 @@ import com.melvin.share.ui.activity.home.ClothActivity;
 import com.melvin.share.ui.activity.home.DeliciousActivity;
 import com.melvin.share.ui.activity.home.DigitalActivity;
 import com.melvin.share.ui.activity.home.FurnitureActivity;
+import com.melvin.share.ui.activity.home.LocationModeSourceActivity;
 import com.melvin.share.ui.activity.home.MarkUpActivity;
 import com.melvin.share.ui.activity.home.OrnamentActivity;
 import com.melvin.share.ui.activity.SearchActivity;
@@ -37,9 +38,9 @@ import java.util.List;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/17
- * <p>
+ * <p/>
  * 描述：首页
  */
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
@@ -59,24 +60,53 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private NoScrollRecyclerView newRecyclerView;
     private NoScrollRecyclerView userRecommendRecyclerView;
     private NoScrollRecyclerView shopRecyclerView;
+    private View root;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-        mContext = getActivity();
-        mLBanners = binding.banners;
-        initClick();
-        initData();
-        initAdapter();
-        LogUtils.i("HomeFragment+initView");
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            mLBanners = binding.banners;
+            initClick();
+            initData();
+            initAdapter();
+            LogUtils.i("HomeFragment+initView");
+            root = binding.getRoot();
+            requestData();
+        }
+        return root;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        newRecyclerView = binding.newRecyclerView;
+        userRecommendRecyclerView = binding.userRecommendRecyclerView;
+        shopRecyclerView = binding.shopRecyclerView;
+        addLocalImg();
+        addUrilImg();
+        //本地用法
+        mLBanners.setAdapter(new LocalImgAdapter(mContext), localImages);
+        //网络图片
+//        mLBanners.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
+
+    }
+
 
     /**
      * 初始化点击事件
      */
     private void initClick() {
         binding.homeScan.setOnClickListener(this);
+        binding.homeLocation.setOnClickListener(this);
         binding.searchEnter.setOnClickListener(this);
         //首页8个主题
         binding.homeDelicious.setOnClickListener(this);
@@ -96,6 +126,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             case R.id.home_scan:
                 Intent openCameraIntent = new Intent(mContext, CaptureActivity.class);
                 startActivityForResult(openCameraIntent, 0);
+                break;
+            case R.id.home_location:
+                startActivity(new Intent(mContext, LocationModeSourceActivity.class));
                 break;
             case R.id.search_enter:
                 startActivity(new Intent(mContext, SearchActivity.class));
@@ -137,29 +170,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             String scanResult = bundle.getString("result");
             Utils.showToast(mContext, scanResult);
         }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        addLocalImg();
-        addUrilImg();
-        //本地用法
-        mLBanners.setAdapter(new LocalImgAdapter(mContext), localImages);
-        //网络图片
-//        mLBanners.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
-        requestData();
-
-    }
-
-    /**
-     * 初始化数据
-     */
-    private void initData() {
-        newRecyclerView = binding.newRecyclerView;
-        userRecommendRecyclerView = binding.userRecommendRecyclerView;
-        shopRecyclerView = binding.shopRecyclerView;
-
     }
 
 
