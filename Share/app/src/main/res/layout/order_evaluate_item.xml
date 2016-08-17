@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -55,14 +56,20 @@
                 android:text="给宝贝打分"
                 android:textSize="18sp" />
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
+            <com.melvin.share.view.RatingBar
+                android:id="@+id/ratingbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                ratingbar:starCount="5"
+                ratingbar:clickable="true"
                 android:layout_alignParentRight="true"
-                android:numStars="5"
-                android:padding="10dp" />
+                ratingbar:starEmpty="@mipmap/star_white"
+                ratingbar:starFill="@mipmap/star_red"
+                ratingbar:starHalf="@mipmap/star_white"
+                ratingbar:starImageSize="25dp"/>
+
 
         </RelativeLayout>
     </LinearLayout>

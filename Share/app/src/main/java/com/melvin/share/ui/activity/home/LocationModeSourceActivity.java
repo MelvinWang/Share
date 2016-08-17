@@ -166,7 +166,7 @@ public class LocationModeSourceActivity extends Activity implements LocationSour
         markerOption.title(s3).snippet(s4);
         markerOption.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
                 .decodeResource(getResources(),
-                        R.mipmap.ic_launcher)));
+                        R.mipmap.position_focus)));
         ArrayList<MarkerOptions> markerOptionlst = new ArrayList<MarkerOptions>();
         markerOptionlst.add(markerOption);
         List<Marker> markerlst = aMap.addMarkers(markerOptionlst, true);

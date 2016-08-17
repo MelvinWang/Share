@@ -25,7 +25,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:padding="8dp"
                     android:src="@mipmap/home_scan" />
 
@@ -56,7 +56,7 @@
                     android:id="@+id/home_location"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:padding="8dp"
                     android:src="@mipmap/home_location" />
             </LinearLayout>
