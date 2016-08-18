@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.allure.lbanners.LMBanners;
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.adapter.ProductInformationAdapter;
 import com.melvin.share.adapter.UrlImgAdapter;
@@ -16,8 +15,7 @@ import com.melvin.share.databinding.FragmentProductinfoBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.ui.fragment.main.BaseFragment;
-import com.melvin.share.view.MyRecyclerView;
-import com.melvin.share.view.NoRefreshRecyclerView;
+import com.melvin.share.view.ScrollRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +27,11 @@ import java.util.List;
  * <p/>
  * 描述：单个商品详细信息
  */
-public class ProductInfoFragment extends BaseFragment implements NoRefreshRecyclerView.LoadingListener {
+public class ProductInfoFragment extends BaseFragment {
     private FragmentProductinfoBinding binding;
     private Context mContext;
     private LMBanners mLBanners;
-    private NoRefreshRecyclerView mRecyclerView;
+    private ScrollRecyclerView mRecyclerView;
     private ProductInformationAdapter productInformationAdapter;
     private List<BaseModel> data = new ArrayList<>();
     //本地图片
@@ -56,9 +54,7 @@ public class ProductInfoFragment extends BaseFragment implements NoRefreshRecycl
      */
     private void initData() {
         mRecyclerView = binding.recyclerView;
-        mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
-        mRecyclerView.setPullRefreshEnabled(false);
-        mRecyclerView.setLoadingListener(this);
+
     }
 
     @Override
@@ -100,16 +96,6 @@ public class ProductInfoFragment extends BaseFragment implements NoRefreshRecycl
 
     }
 
-
-
-    /**
-     * 上拉加载更多
-     */
-    @Override
-    public void onLoadMore() {
-        requestData();
-        mRecyclerView.loadMoreComplete();
-    }
 
 
     private void addUrilImg() {

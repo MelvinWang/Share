@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.databinding.FragmentSelfBinding;
 import com.melvin.share.ui.activity.common.LoginActivity;
 import com.melvin.share.ui.activity.selfcenter.AboutUsActivity;
+import com.melvin.share.ui.activity.selfcenter.LocationShopActivity;
 import com.melvin.share.ui.activity.selfcenter.ManageAddressActivity;
 import com.melvin.share.ui.activity.selfcenter.MyRebateActivity;
 import com.melvin.share.ui.activity.selfcenter.OpenshopFirstActivity;
@@ -47,6 +49,8 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
             LogUtils.i("SelfFragment+initView");
             bingClick();
             root = binding.getRoot();
+        }else{
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
         }
         return root;
     }
@@ -139,7 +143,8 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
                 mContext.startActivity(intent);
                 break;
             case R.id.click_vip://申请线下体验馆
-
+                intent.setClass(mContext, LocationShopActivity.class);
+                mContext.startActivity(intent);
                 break;
 
             case R.id.click_receive_address://收货地址

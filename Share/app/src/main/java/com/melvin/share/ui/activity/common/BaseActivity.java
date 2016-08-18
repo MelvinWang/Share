@@ -19,9 +19,9 @@ import retrofit.Retrofit;
 
 /**
  * Created Time: 2016/7/17.
- * <p>
+ * <p/>
  * Author:Melvin
- * <p>
+ * <p/>
  * 功能：基类
  */
 public abstract class BaseActivity extends AppCompatActivity {
@@ -42,10 +42,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             mActivities.add(this);
         }
         initView();
+        initMapView(savedInstanceState);
     }
 
     //一定得重写，初始化页面
     protected abstract void initView();
+
+    //一定得重写，初始化页面
+    protected void initMapView(Bundle savedInstanceState) {
+    }
 
 
 
@@ -101,7 +106,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         // 杀死当前的进程
         android.os.Process.killProcess(android.os.Process.myPid());
     }
-
 
 
 }

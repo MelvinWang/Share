@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * 不能左右划的RecyclerView
+ * 不能上下划的RecyclerView
  * 
  * @author Melvin
  * 

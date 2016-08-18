@@ -144,7 +144,8 @@
         <!-- 个人中心 ，第三排-->
         <activity
             android:name=".ui.activity.selfcenter.MyRebateActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name=".ui.activity.selfcenter.OpenshopFirstActivity"
             android:screenOrientation="portrait" />
@@ -165,6 +166,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.selfcenter.NewAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <activity
+            android:name=".ui.activity.selfcenter.LocationShopActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 

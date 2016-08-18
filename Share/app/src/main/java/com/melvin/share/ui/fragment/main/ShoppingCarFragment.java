@@ -14,6 +14,7 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxCarBus;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.ShopCarAdapter;
 import com.melvin.share.databinding.FragmentShoppingCarBinding;
 import com.melvin.share.model.BaseModel;
@@ -51,6 +52,8 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
             initAdapter();
             root = binding.getRoot();
             requestData();
+        }else{
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
         }
         return root;
     }
@@ -58,7 +61,7 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
     @Override
     public void onStart() {
         super.onStart();
-        LogUtils.i("ShoppingCarFragment+onStart");
+//        LogUtils.i("ShoppingCarFragment+onStart");
         RxCarBus.get().register(this); //注册
     }
 
@@ -100,19 +103,19 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.i("ShoppingCarFragment+onResume");
+//        LogUtils.i("ShoppingCarFragment+onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.i("ShoppingCarFragment+onPause");
+//        LogUtils.i("ShoppingCarFragment+onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        LogUtils.i("ShoppingCarFragment+onStop");
+//        LogUtils.i("ShoppingCarFragment+onStop");
         RxCarBus.get().unregister(this);//销毁
     }
 

@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity {
      */
     private void initData() {
         mViewPager = binding.mViewPager;
+        mViewPager.setOffscreenPageLimit(3);
         mRadioGroup = binding.mRadioGroup;
         mRadioGroup.check(R.id.waybill);
         //设置适配器
@@ -75,4 +76,10 @@ public class MainActivity extends BaseActivity {
         mViewPager.setCurrentItem(0);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        killAll();
+    }
 }

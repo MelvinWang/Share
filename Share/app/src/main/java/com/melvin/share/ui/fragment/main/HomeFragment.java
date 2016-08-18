@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.allure.lbanners.LMBanners;
+import com.amap.api.maps.model.Marker;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.Utils;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.HomeProductAdapter;
 import com.melvin.share.adapter.HomeShopAdapter;
 import com.melvin.share.adapter.LocalImgAdapter;
@@ -74,6 +76,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             LogUtils.i("HomeFragment+initView");
             root = binding.getRoot();
             requestData();
+        }else{
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
         }
         return root;
     }

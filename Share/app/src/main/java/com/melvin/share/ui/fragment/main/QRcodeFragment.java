@@ -16,6 +16,7 @@ import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxBus;
 import com.melvin.share.Utils.Utils;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.QrcodeAdapter;
 import com.melvin.share.databinding.FragmentQrCodeBinding;
 import com.melvin.share.popwindow.SelectPicPopupWindow;
@@ -44,6 +45,8 @@ public class QRcodeFragment extends BaseFragment {
             LogUtils.i("QRcodeFragment+initView");
             initTable();
             root = binding.getRoot();
+        }else{
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
         }
         return root;
     }
@@ -51,7 +54,6 @@ public class QRcodeFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        LogUtils.i("QRcodeFragment+onStart");
         RxBus.get().register(this); //注册
     }
 
@@ -85,19 +87,19 @@ public class QRcodeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.i("QRcodeFragment+onResume");
+//        LogUtils.i("QRcodeFragment+onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.i("QRcodeFragment+onPause");
+//        LogUtils.i("QRcodeFragment+onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        LogUtils.i("QRcodeFragment+onStop");
+//        LogUtils.i("QRcodeFragment+onStop");
         RxBus.get().unregister(this);//销毁
     }
 
