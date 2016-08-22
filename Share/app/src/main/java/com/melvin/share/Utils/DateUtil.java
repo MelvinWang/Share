@@ -254,7 +254,7 @@ public class DateUtil
 	 * @return String
 	 * @throws Exception
 	 */
-	public static String getNowPlusTime() throws Exception
+	public static String getNowPlusTime()
 	{
 		String nowDate = "";
 		try
@@ -266,7 +266,7 @@ public class DateUtil
 		}
 		catch (Exception e)
 		{
-			throw e;
+			return "";
 		}
 	}
 

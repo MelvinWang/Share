@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 
+import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.network.GlobalUrl;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 
 /**
@@ -17,11 +20,11 @@ import com.melvin.share.ui.activity.ProductInfoActivity;
  */
 public class DeliciousItemViewModel extends BaseObservable {
 
-    private User user;
+    private Product product;
     private Context context;
 
-    public DeliciousItemViewModel(Context context, User user) {
-        this.user = user;
+    public DeliciousItemViewModel(Context context, Product product) {
+        this.product = product;
         this.context = context;
     }
 
@@ -30,11 +33,33 @@ public class DeliciousItemViewModel extends BaseObservable {
     }
 
     public String getImgUrl() {
-        return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
+        String[] split = product.picture.split("\\|");
+        if (split != null && split.length >= 1) {
+            String url = GlobalUrl.SERVICE_URL + split[2];
+            LogUtils.e("哈哈"+url);
+            return url;
+        }
+        return "";
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public String getShareTimes() {
+        return product.shareTimes;
+    }
+
+    public String getProductName() {
+        return product.productName;
+    }
+
+    public String getPrice() {
+        return "￥:"+product.price;
+    }
+
+    public String getPlace() {
+        return product.place;
+    }
+
+    public void setEntity(Product product) {
+        this.product = product;
         notifyChange();
     }
 }

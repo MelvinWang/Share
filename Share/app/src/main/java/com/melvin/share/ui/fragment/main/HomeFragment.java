@@ -3,6 +3,7 @@ package com.melvin.share.ui.fragment.main;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.MutableContextWrapper;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,15 +15,20 @@ import android.view.ViewGroup;
 import com.allure.lbanners.LMBanners;
 import com.amap.api.maps.model.Marker;
 import com.melvin.share.R;
+import com.melvin.share.Utils.DateUtil;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.Utils;
 import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.HomeProductAdapter;
 import com.melvin.share.adapter.HomeShopAdapter;
 import com.melvin.share.adapter.LocalImgAdapter;
+import com.melvin.share.adapter.UrlImgAdapter;
 import com.melvin.share.databinding.FragmentHomeBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Category;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.common.MainActivity;
 import com.melvin.share.ui.activity.home.ClothActivity;
 import com.melvin.share.ui.activity.home.DeliciousActivity;
 import com.melvin.share.ui.activity.home.DigitalActivity;
@@ -33,10 +39,19 @@ import com.melvin.share.ui.activity.home.OrnamentActivity;
 import com.melvin.share.ui.activity.SearchActivity;
 import com.melvin.share.ui.activity.home.ShoesActivity;
 import com.melvin.share.view.NoScrollRecyclerView;
+import com.melvin.share.view.RxListSubscribe;
+import com.melvin.share.view.RxSubscribe;
 import com.melvin.share.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
+import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin
@@ -50,7 +65,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private FragmentHomeBinding binding;
     private Context mContext;
     private LMBanners mLBanners;
-    private ArrayList<Integer> localImages = new ArrayList<Integer>();
     private List<String> networkImages = new ArrayList<>();
     private HomeProductAdapter newProductAdapter;
     private HomeProductAdapter userRecommendProductAdapter;
@@ -59,6 +73,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private List<BaseModel> data1 = new ArrayList<>();
     private List<BaseModel> data2 = new ArrayList<>();
     private List<BaseModel> data3 = new ArrayList<>();
+    private List<Category> categoryList = new ArrayList<>();
     private NoScrollRecyclerView newRecyclerView;
     private NoScrollRecyclerView userRecommendRecyclerView;
     private NoScrollRecyclerView shopRecyclerView;
@@ -76,7 +91,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             LogUtils.i("HomeFragment+initView");
             root = binding.getRoot();
             requestData();
-        }else{
+        } else {
             ViewUtils.removeParent(root);// 移除frameLayout之前的爹
         }
         return root;
@@ -95,12 +110,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         newRecyclerView = binding.newRecyclerView;
         userRecommendRecyclerView = binding.userRecommendRecyclerView;
         shopRecyclerView = binding.shopRecyclerView;
-        addLocalImg();
-        addUrilImg();
-        //本地用法
-        mLBanners.setAdapter(new LocalImgAdapter(mContext), localImages);
-        //网络图片
-//        mLBanners.setAdapter(new UrlImgAdapter(MainActivity.this), networkImages);
+
 
     }
 
@@ -126,6 +136,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.home_scan:
                 Intent openCameraIntent = new Intent(mContext, CaptureActivity.class);
@@ -139,25 +150,39 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             //首页8个主题
             case R.id.home_delicious:
-                startActivity(new Intent(mContext, DeliciousActivity.class));
+                intent.setClass(mContext, DeliciousActivity.class);
+                intent.putExtra("id", "1");
+                startActivity(intent);
                 break;
             case R.id.home_cloth:
-                startActivity(new Intent(mContext, ClothActivity.class));
+                intent.setClass(mContext, ClothActivity.class);
+                intent.putExtra("id", "2");
+                startActivity(intent);
                 break;
             case R.id.home_ele:
-                startActivity(new Intent(mContext, DigitalActivity.class));
+                intent.setClass(mContext, DigitalActivity.class);
+                intent.putExtra("id", "3");
+                startActivity(intent);
                 break;
             case R.id.home_markup:
-                startActivity(new Intent(mContext, MarkUpActivity.class));
+                intent.setClass(mContext, MarkUpActivity.class);
+                intent.putExtra("id", "4");
+                startActivity(intent);
                 break;
             case R.id.home_furnish:
-                startActivity(new Intent(mContext, FurnitureActivity.class));
+                intent.setClass(mContext, FurnitureActivity.class);
+                intent.putExtra("id", "5");
+                startActivity(intent);
                 break;
             case R.id.home_ornament:
-                startActivity(new Intent(mContext, OrnamentActivity.class));
+                intent.setClass(mContext, OrnamentActivity.class);
+                intent.putExtra("id", "6");
+                startActivity(intent);
                 break;
             case R.id.home_shoes:
-                startActivity(new Intent(mContext, ShoesActivity.class));
+                intent.setClass(mContext, ShoesActivity.class);
+                intent.putExtra("id", "7");
+                startActivity(intent);
                 break;
             case R.id.home_other:
                 Utils.showToast(mContext, "其他页面");
@@ -204,6 +229,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      * 请求网络
      */
     private void requestData() {
+        requestAD();
+        requestCategory();
+        requestNewProduct();
+        requestRecommendProdcut();
+        requesRecommentShop();
+
         List list = new ArrayList<>();
         for (int i = 1; i <= 8; i++) {
             User user = new User();
@@ -211,15 +242,95 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             user.username = "2";
             list.add(user);
         }
-        data1.addAll(list);
-        data2.addAll(list);
         data3.addAll(list);
-        newProductAdapter.notifyDataSetChanged();
-        userRecommendProductAdapter.notifyDataSetChanged();
         shopAdapter.notifyDataSetChanged();
 
     }
 
+
+    /**
+     * 轮播图
+     */
+    private void requestAD() {
+        addUrilImg();
+        mLBanners.setAdapter(new UrlImgAdapter(mContext), networkImages);
+    }
+
+    /**
+     * 商品分类
+     */
+    private void requestCategory() {
+        fromNetwork.categoryFind()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<ArrayList<Category>>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<Category> categorys) {
+                        categoryList.addAll(categorys);
+                    }
+
+                    @Override
+                    protected void myError(String message) {
+
+                    }
+                });
+
+    }
+
+    /**
+     * 新商品
+     */
+    private void requestNewProduct() {
+        Map map = new HashMap();
+        map.put("createTime", DateUtil.getNowPlusTime());
+        map.put("rows", "8");
+        fromNetwork.findProductsInHomePage(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxListSubscribe<Product>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<Product> productList) {
+                        data1.addAll(productList);
+                        userRecommendProductAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    protected void myError(String message) {
+
+                    }
+                });
+    }
+
+    /**
+     * 推荐商品
+     */
+    private void requestRecommendProdcut() {
+        Map map = new HashMap();
+        map.put("saleTotal", "1");
+        map.put("rows", "8");
+        Subscription subscribe = fromNetwork.findProductsInHomePage(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxListSubscribe<Product>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<Product> productList) {
+                        data2.addAll(productList);
+                        newProductAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    protected void myError(String message) {
+
+                    }
+                });
+    }
+
+    /**
+     * 推荐店铺
+     */
+    private void requesRecommentShop() {
+
+    }
 
     private void addUrilImg() {
         networkImages.clear();
@@ -228,15 +339,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         networkImages.add("http://a.hiphotos.baidu.com/image/h%3D300/sign=61660ec2207f9e2f6f351b082f31e962/500fd9f9d72a6059e5c05d3e2f34349b023bbac6.jpg");
         networkImages.add("http://c.hiphotos.baidu.com/image/h%3D300/sign=f840688728738bd4db21b431918a876c/f7246b600c338744c90c3826570fd9f9d62aa09a.jpg");
 
-    }
-
-    private void addLocalImg() {
-        localImages.clear();
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
     }
 
     @Override

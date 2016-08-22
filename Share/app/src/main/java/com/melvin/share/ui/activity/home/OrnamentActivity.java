@@ -12,6 +12,9 @@ import com.melvin.share.modelview.OrnamentViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Author: Melvin
  * <p/>
@@ -26,24 +29,27 @@ public class OrnamentActivity extends BaseActivity implements MyRecyclerView.Loa
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private OrnamentViewModel ornamentViewModel;
-
+    private Map map=new HashMap();
+    private String id;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ornament);
         mContext = this;
+        id = getIntent().getStringExtra("id");
         initWindow();
         initToolbar(binding.toolbar);
         ininData();
     }
 
     private void ininData() {
+        map.put("id",id);
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         ornamentViewModel = new OrnamentViewModel(this, mRecyclerView, mRoot);
         binding.setViewModel(ornamentViewModel);
-        ornamentViewModel.requestData();
+        ornamentViewModel.requestData(map);
     }
 
     /**
@@ -51,7 +57,7 @@ public class OrnamentActivity extends BaseActivity implements MyRecyclerView.Loa
      */
     @Override
     public void onRefresh() {
-        ornamentViewModel.requestData();
+        ornamentViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 

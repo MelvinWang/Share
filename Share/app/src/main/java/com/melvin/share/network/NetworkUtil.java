@@ -1,17 +1,26 @@
 package com.melvin.share.network;
 
 
+import com.melvin.share.model.Category;
+import com.melvin.share.model.Product;
 import com.squareup.okhttp.OkHttpClient;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
+import retrofit.http.FieldMap;
+import retrofit.http.FormUrlEncoded;
+import retrofit.http.POST;
+import rx.Observable;
 
 /**
  * Created Time: 2016/7/17.
- * <p/>
+ * <p>
  * Author:Melvin
- * <p/>
+ * <p>
  * 功能：网络请求工具及其接口
  */
 public class NetworkUtil {
@@ -25,6 +34,17 @@ public class NetworkUtil {
 //        @FormUrlEncoded
 //        @POST("auth/login")
 //        Observable<LoginReturn> rxLogin(@FieldMap Map<Object, Object> login);
+        //首页分类
+        @POST("/app/category/findAll")
+        Observable<ArrayList<Category>> categoryFind();
+        //首页推荐
+        @FormUrlEncoded
+        @POST("/app/product/findProductsInHomePage")
+        Observable<ArrayList<Product>> findProductsInHomePage(@FieldMap Map<Object, Object> map);
+        @FormUrlEncoded
+        //首页每个分类详情
+        @POST("/app/product/findProductsByCategory")
+        Observable<ArrayList<Product>> findProductsByCategory(@FieldMap Map<Object, Object> map);
 
 
     }

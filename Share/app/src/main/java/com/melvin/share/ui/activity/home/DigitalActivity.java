@@ -12,6 +12,9 @@ import com.melvin.share.modelview.DigitalViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Author: Melvin
  * <p/>
@@ -26,24 +29,27 @@ public class DigitalActivity extends BaseActivity implements MyRecyclerView.Load
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private DigitalViewModel digitalViewModel;
-
+    private Map map=new HashMap();
+    private String id;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_digital);
         mContext = this;
+        id = getIntent().getStringExtra("id");
         initWindow();
         initToolbar(binding.toolbar);
         ininData();
     }
 
     private void ininData() {
+        map.put("id",id);
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         digitalViewModel = new DigitalViewModel(this, mRecyclerView, mRoot);
         binding.setViewModel(digitalViewModel);
-        digitalViewModel.requestData();
+        digitalViewModel.requestData(map);
     }
 
     /**
@@ -51,7 +57,7 @@ public class DigitalActivity extends BaseActivity implements MyRecyclerView.Load
      */
     @Override
     public void onRefresh() {
-        digitalViewModel.requestData();
+        digitalViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 

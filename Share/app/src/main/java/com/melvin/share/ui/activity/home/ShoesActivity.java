@@ -12,6 +12,9 @@ import com.melvin.share.modelview.ShoesViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Author: Melvin
  * <p/>
@@ -26,24 +29,27 @@ public class ShoesActivity extends BaseActivity implements MyRecyclerView.Loadin
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private ShoesViewModel shoesViewModel;
-
+    private Map map=new HashMap();
+    private String id;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shoes);
         mContext = this;
+        id = getIntent().getStringExtra("id");
         initWindow();
         initToolbar(binding.toolbar);
         ininData();
     }
 
     private void ininData() {
+        map.put("id",id);
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         shoesViewModel = new ShoesViewModel(this, mRecyclerView, mRoot);
         binding.setViewModel(shoesViewModel);
-        shoesViewModel.requestData();
+        shoesViewModel.requestData(map);
     }
 
     /**
@@ -51,7 +57,7 @@ public class ShoesActivity extends BaseActivity implements MyRecyclerView.Loadin
      */
     @Override
     public void onRefresh() {
-        shoesViewModel.requestData();
+        shoesViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 

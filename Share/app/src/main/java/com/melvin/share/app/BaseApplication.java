@@ -32,7 +32,7 @@ public class BaseApplication extends Application {
     /**
      * 检查当前网络是否可用
      */
-    public boolean isNetworkAvailable(Context context) {
+    public static boolean isNetworkAvailable(Context context) {
         // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {

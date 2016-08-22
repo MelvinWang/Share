@@ -12,6 +12,9 @@ import com.melvin.share.modelview.MarkupViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Author: Melvin
  * <p/>
@@ -26,24 +29,27 @@ public class MarkUpActivity extends BaseActivity implements MyRecyclerView.Loadi
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private MarkupViewModel markupViewModel;
-
+    private Map map=new HashMap();
+    private String id;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_markup);
         mContext = this;
+        id = getIntent().getStringExtra("id");
         initWindow();
         initToolbar(binding.toolbar);
         ininData();
     }
 
     private void ininData() {
+        map.put("id",id);
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         markupViewModel = new MarkupViewModel(this, mRecyclerView, mRoot);
         binding.setViewModel(markupViewModel);
-        markupViewModel.requestData();
+        markupViewModel.requestData(map);
     }
 
     /**
@@ -51,7 +57,7 @@ public class MarkUpActivity extends BaseActivity implements MyRecyclerView.Loadi
      */
     @Override
     public void onRefresh() {
-        markupViewModel.requestData();
+        markupViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 

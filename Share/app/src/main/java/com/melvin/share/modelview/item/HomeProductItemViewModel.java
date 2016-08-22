@@ -6,27 +6,27 @@ import android.databinding.BaseObservable;
 import android.view.View;
 import android.widget.CompoundButton;
 
+import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxBus;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.network.GlobalUrl;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 
 /**
  * Created Time: 2016/7/31.
- * <p/>
+ * <p>
  * Author:Melvin
- * <p/>
+ * <p>
  * 功能：首页商品item的ViewModel
  */
 public class HomeProductItemViewModel extends BaseObservable {
 
-    private User user;
+    private Product product;
     private Context context;
-    private boolean isShowEdit = true;
-    private boolean isShowDone = false;
-    private String number = "1";
 
-    public HomeProductItemViewModel(Context context, User user) {
-        this.user = user;
+    public HomeProductItemViewModel(Context context, Product product) {
+        this.product = product;
         this.context = context;
     }
 
@@ -35,57 +35,27 @@ public class HomeProductItemViewModel extends BaseObservable {
 
     }
 
-    public String getNumber() {
-        return number;
+    public String getShareTimes() {
+        return product.shareTimes+"次分享";
     }
 
-    public void onAddClick(View view) {
-        this.number = Integer.parseInt(number) + 1 + "";
-        notifyChange();
-
-    }
-
-    public void onDeleteClick(View view) {
-        this.number = ((Integer.parseInt(number) - 1) == 0) ? "0" : (Integer.parseInt(number) - 1 + "");
-        notifyChange();
-    }
-
-
-    public boolean getIsShowEdit() {
-        return isShowEdit;
-    }
-
-    public void setIsShowEdit(boolean b) {
-        this.isShowEdit = b;
-    }
-
-    public boolean getIsShowDone() {
-        return isShowDone;
-    }
-
-    public void setIsShowDone(boolean b) {
-        this.isShowDone = b;
-    }
-
-    public void edit(View view) {
-        setIsShowEdit(false);
-        setIsShowDone(true);
-        notifyChange();
-    }
-
-    public void done(View view) {
-        setIsShowEdit(true);
-        setIsShowDone(false);
-        notifyChange();
+    public String getProductName() {
+        return product.productName;
     }
 
 
     public String getImgUrl() {
-        return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
+        String[] split = product.picture.split("\\|");
+        if (split != null && split.length >= 1) {
+            String url = GlobalUrl.SERVICE_URL + split[2];
+            LogUtils.e("哈哈"+url);
+            return url;
+        }
+        return "";
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public void setEntity(Product product) {
+        this.product = product;
         notifyChange();
     }
 }
