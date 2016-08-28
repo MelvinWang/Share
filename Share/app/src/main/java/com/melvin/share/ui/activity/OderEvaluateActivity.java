@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityOrderEvaluateBinding;
-import com.melvin.share.modelview.OrderEvaluateViewModel;
+import com.melvin.share.modelview.acti.OrderEvaluateViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

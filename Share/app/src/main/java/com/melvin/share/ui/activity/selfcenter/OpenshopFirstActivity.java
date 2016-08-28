@@ -4,16 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.view.View;
-import android.widget.LinearLayout;
 
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityOpenShopFBinding;
-import com.melvin.share.databinding.ActivityReceiveAddressBinding;
-import com.melvin.share.modelview.ManageAddressViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
-import com.melvin.share.ui.activity.common.RegisterSecondActivity;
-import com.melvin.share.view.MyRecyclerView;
 
 /**
  * Author: Melvin

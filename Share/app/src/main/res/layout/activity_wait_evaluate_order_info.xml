@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.melvin.share.modelview.WaitEvaluateOrderInfoViewModel" />
+            type="com.melvin.share.modelview.acti.WaitEvaluateOrderInfoViewModel" />
 
     </data>
 

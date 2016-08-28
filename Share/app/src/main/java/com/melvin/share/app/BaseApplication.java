@@ -2,24 +2,28 @@ package com.melvin.share.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import com.melvin.share.Utils.Utils;
+
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/17
- * <p>
+ * <p/>
  * 描述：初始App
  */
 public class BaseApplication extends Application {
     private static BaseApplication application;
-
+    public static SharedPreferences mPre;
     @Override
     public void onCreate() {
         super.onCreate();
         application = this;
+        mPre = Utils.getShare(application);
         if (!isNetworkAvailable(application)) {
             Toast.makeText(application, "当前无可用网络，请检查是否连接网络!!!", Toast.LENGTH_LONG).show();
         }

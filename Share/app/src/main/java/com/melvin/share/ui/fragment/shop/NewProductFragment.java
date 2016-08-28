@@ -10,21 +10,32 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
+import com.melvin.share.Utils.DateUtil;
+import com.melvin.share.Utils.Utils;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.NewProductAdapter;
 import com.melvin.share.databinding.FragmentNewProductBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.ui.activity.ShopInformationActivity;
 import com.melvin.share.ui.fragment.main.BaseFragment;
 import com.melvin.share.view.NoRefreshRecyclerView;
+import com.melvin.share.view.RxSubscribe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/25
- * <p>
+ * <p/>
  * 描述：新品上架
  */
 public class NewProductFragment extends BaseFragment implements NoRefreshRecyclerView.LoadingListener {
@@ -34,14 +45,23 @@ public class NewProductFragment extends BaseFragment implements NoRefreshRecycle
     private NoRefreshRecyclerView mRecyclerView;
     private NewProductAdapter newProductAdapter;
     private List<BaseModel> data = new ArrayList<>();
+    private View root;
+    private Map map;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_new_prodcut, container, false);
-        mContext = getActivity();
-        initData();
-        initAdapter();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            map = new HashMap();
+            initData();
+            initAdapter();
+            requestData();
+            root = binding.getRoot();
+        } else {
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
+        }
+        return root;
     }
 
     /**
@@ -64,25 +84,27 @@ public class NewProductFragment extends BaseFragment implements NoRefreshRecycle
         mRecyclerView.setAdapter(newProductAdapter);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        requestData();
-    }
-
     /**
      * 请求网络
      */
     private void requestData() {
-        List list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            User user = new User();
-            user.password = i + "";
-            user.username = i + "";
-            list.add(user);
-        }
-        data.addAll(list);
-        newProductAdapter.notifyDataSetChanged();
+        map.put("seller.id", ShopInformationActivity.sellerId);
+        map.put("createTime", DateUtil.getNowPlusTime());
+        fromNetwork.findProductsBySeller(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<ArrayList<Product>>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<Product> list) {
+                        data.addAll(list);
+                        newProductAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    protected void myError(String message) {
+                        Utils.showToast(mContext, message);
+                    }
+                });
 
     }
 

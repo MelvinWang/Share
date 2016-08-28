@@ -9,7 +9,7 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityConfirmOrderBinding;
 import com.melvin.share.dialog.PaySuccessDialog;
-import com.melvin.share.modelview.ConfirmOrderViewModel;
+import com.melvin.share.modelview.acti.ConfirmOrderViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

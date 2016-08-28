@@ -46,6 +46,7 @@ public class MainActivity extends BaseActivity {
      * 初始化数据
      */
     private void initData() {
+        mPref.edit().putString("customerId", "1").commit();
         mViewPager = binding.mViewPager;
         mViewPager.setOffscreenPageLimit(3);
         mRadioGroup = binding.mRadioGroup;

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.melvin.share.modelview.WaitReceiveProOrderInfoViewModel" />
+            type="com.melvin.share.modelview.acti.WaitReceiveProOrderInfoViewModel" />
 
     </data>
 

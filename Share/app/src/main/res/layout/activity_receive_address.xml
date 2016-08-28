@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.melvin.share.modelview.ManageAddressViewModel" />
+            type="com.melvin.share.modelview.acti.ManageAddressViewModel" />
 
     </data>
 
@@ -62,6 +62,7 @@
                 tools:listitem="@layout/receive_address_item" />
 
             <Button
+                android:onClick="onNewAddress"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"

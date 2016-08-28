@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.melvin.share.R;
+import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.adapter.ProductInfoAdapter;
 import com.melvin.share.databinding.ActivityProductInfoBinding;
 import com.melvin.share.ui.activity.common.BaseActivity;
@@ -17,9 +18,9 @@ import com.melvin.share.popwindow.PurchasePopupWindow;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/25
- * <p>
+ * <p/>
  * 描述：产品信息
  */
 public class ProductInfoActivity extends BaseActivity {
@@ -27,12 +28,15 @@ public class ProductInfoActivity extends BaseActivity {
     private Context mContext = null;
     private PurchasePopupWindow menuWindow;
     private boolean flag = true;//true代表购买,false代表加入购物车
+    public static String productId;
 
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_info);
         mContext = this;
         menuWindow = new PurchasePopupWindow((Activity) mContext, itemsOnClick);
+        productId = getIntent().getStringExtra("productId");
+        LogUtils.i("哈哈"+productId);
         initWindow();
         initToolbar(binding.toolbar);
         initTable();

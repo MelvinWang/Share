@@ -2,29 +2,14 @@ package com.melvin.share.ui.activity.shopcar;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.hwangjr.rxbus.annotation.Subscribe;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
-import com.melvin.share.Utils.LogUtils;
-import com.melvin.share.Utils.RxBus;
-import com.melvin.share.adapter.ShopCarAdapter;
 import com.melvin.share.databinding.ActivityShoppingCarEditBinding;
-import com.melvin.share.databinding.FragmentShoppingCarBinding;
-import com.melvin.share.model.BaseModel;
-import com.melvin.share.model.User;
-import com.melvin.share.modelview.ShopCarEditViewModel;
+import com.melvin.share.modelview.acti.ShopCarEditViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Author: Melvin

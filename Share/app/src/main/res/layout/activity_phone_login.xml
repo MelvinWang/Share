@@ -48,6 +48,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="40dp"
                     android:drawableLeft="@mipmap/phone"
+                    android:inputType="number"
                     android:drawablePadding="20dp"
                     android:hint="手机号"
                     android:paddingLeft="20dp"
@@ -72,11 +73,13 @@
                         android:drawablePadding="20dp"
                         android:hint="验证码"
                         android:paddingLeft="20dp"
+                        android:inputType="number"
                         android:textColor="@color/color_999"
                         android:textColorHint="@color/color_999"
                         android:textSize="@dimen/page_18" />
 
                     <Button
+                        android:onClick="getCode"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:layout_alignParentRight="true"
@@ -122,6 +125,7 @@
 
 
                 <Button
+                    android:onClick="loginDone"
                     android:id="@+id/login"
                     style="@style/CircularBtnStyle"
                     android:layout_below="@id/cerification_ll"

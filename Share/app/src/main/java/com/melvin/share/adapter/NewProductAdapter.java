@@ -10,6 +10,7 @@ import com.melvin.share.R;
 import com.melvin.share.databinding.AllProductItemBinding;
 import com.melvin.share.databinding.NewProductItemBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
 import com.melvin.share.modelview.item.AllProductItemViewModel;
 import com.melvin.share.modelview.item.NewProductItemViewModel;
@@ -45,7 +46,7 @@ public class NewProductAdapter extends BaseAdapter<NewProductAdapter.BindingHold
 
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
-        holder.bindObject((User) list.get(position));
+        holder.bindObject((Product) list.get(position));
     }
 
     @Override
@@ -64,11 +65,11 @@ public class NewProductAdapter extends BaseAdapter<NewProductAdapter.BindingHold
             this.binding = binding;
         }
 
-        void bindObject(final User user) {
+        void bindObject(final Product product) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new NewProductItemViewModel(context, user));
+                binding.setViewModel(new NewProductItemViewModel(context, product));
             } else {
-                binding.getViewModel().setEntity(user);
+                binding.getViewModel().setEntity(product);
             }
         }
     }

@@ -9,10 +9,9 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.Utils;
 import com.melvin.share.databinding.ActivityWaitPayOrderInfoBinding;
-import com.melvin.share.dialog.ConfirmReceiveDialog;
 import com.melvin.share.dialog.OrderCancelDialog;
 import com.melvin.share.dialog.PaySuccessDialog;
-import com.melvin.share.modelview.WaitPayOrderInfoViewModel;
+import com.melvin.share.modelview.acti.WaitPayOrderInfoViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

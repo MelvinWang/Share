@@ -1,10 +1,15 @@
 package com.melvin.share.modelview.item;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 
+import com.melvin.share.Utils.RxCommonBus;
+import com.melvin.share.Utils.Utils;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.AddressBean;
+import com.melvin.share.ui.activity.selfcenter.NewAddressActivity;
 
 /**
  * Created Time: 2016/7/24.
@@ -15,24 +20,64 @@ import com.melvin.share.model.User;
  */
 public class ManageAddressItemViewModel extends BaseObservable {
 
-    private User user;
+    private AddressBean addressBean;
     private Context context;
 
-    public ManageAddressItemViewModel(Context context, User user) {
-        this.user = user;
+    public ManageAddressItemViewModel(Context context, AddressBean addressBean) {
+        this.addressBean = addressBean;
         this.context = context;
     }
 
-    public void onItemClick(View view) {
-
+    public String getName() {
+        return addressBean.recever;
     }
 
-    public String getImgUrl() {
-        return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
+    public String getPhone() {
+        return addressBean.receverPhone;
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public String getAddress() {
+        return addressBean.area + addressBean.address;
+    }
+
+    public boolean getIsFocus() {
+        return addressBean.defaultAddress;
+    }
+
+    /**
+     * 设为默认地址
+     *
+     * @param view
+     */
+    public void setDefault(View view) {
+        addressBean.flag = "1";
+        RxCommonBus.get().post(addressBean);
+    }
+
+    /**
+     * 修改
+     *
+     * @param view
+     */
+    public void onUpdate(View view) {
+        Intent intent = new Intent(context, NewAddressActivity.class);
+        intent.putExtra("addressBean", addressBean);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 删除
+     *
+     * @param view
+     */
+    public void onDelete(View view) {
+        addressBean.flag = "2";
+        RxCommonBus.get().post(addressBean);
+    }
+
+
+    public void setEntity(AddressBean addressBean) {
+        this.addressBean = addressBean;
         notifyChange();
     }
 }

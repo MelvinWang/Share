@@ -10,15 +10,28 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
+import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.Utils.Utils;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.AllProductAdapter;
 import com.melvin.share.databinding.FragmentAllProductBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.BaseReturnModel;
+import com.melvin.share.ui.activity.ShopInformationActivity;
+import com.melvin.share.ui.activity.selfcenter.ManageAddressActivity;
 import com.melvin.share.ui.fragment.main.BaseFragment;
 import com.melvin.share.view.NoRefreshRecyclerView;
+import com.melvin.share.view.RxSubscribe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin
@@ -34,14 +47,21 @@ public class AllProductFragment extends BaseFragment implements NoRefreshRecycle
     private NoRefreshRecyclerView mRecyclerView;
     private AllProductAdapter allProductAdapter;
     private List<BaseModel> data = new ArrayList<>();
-
+    private View root;
+    private Map map;
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_all_product, container, false);
-        mContext = getActivity();
-        initData();
-        initAdapter();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            initData();
+            initAdapter();
+            requestData();
+            root = binding.getRoot();
+        } else {
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
+        }
+        return root;
     }
 
     /**
@@ -65,25 +85,28 @@ public class AllProductFragment extends BaseFragment implements NoRefreshRecycle
         mRecyclerView.setAdapter(allProductAdapter);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        requestData();
-    }
-
     /**
      * 请求网络
      */
     private void requestData() {
-        List list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            User user = new User();
-            user.password = i + "";
-            user.username = i + "";
-            list.add(user);
-        }
-        data.addAll(list);
-        allProductAdapter.notifyDataSetChanged();
+        map=new HashMap();
+        map.put("seller.id", ShopInformationActivity.sellerId);
+        fromNetwork.findProductsBySeller(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<ArrayList<Product>>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<Product> list) {
+                        data.addAll(list);
+                        allProductAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    protected void myError(String message) {
+                        Utils.showToast(mContext, message);
+                    }
+                });
+
 
     }
 

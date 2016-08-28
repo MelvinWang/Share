@@ -29,13 +29,15 @@ public class DigitalItemViewModel extends BaseObservable {
     }
 
     public void onItemClick(View view) {
-        context.startActivity(new Intent(context, ProductInfoActivity.class));
+        Intent intent = new Intent(context, ProductInfoActivity.class);
+        intent.putExtra("productId",product.id);
+        context.startActivity(intent);
     }
 
     public String getImgUrl() {
         String[] split = product.picture.split("\\|");
         if (split != null && split.length >= 1) {
-            String url = GlobalUrl.SERVICE_URL + split[2];
+            String url = GlobalUrl.SERVICE_URL + split[0];
             LogUtils.e("哈哈"+url);
             return url;
         }

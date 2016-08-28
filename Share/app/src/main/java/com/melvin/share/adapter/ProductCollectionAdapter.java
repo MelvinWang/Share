@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ProductCollectionItemBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
 import com.melvin.share.modelview.item.ProductCollectionItemViewModel;
 
@@ -42,7 +43,7 @@ public class ProductCollectionAdapter extends BaseAdapter<ProductCollectionAdapt
 
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
-        holder.bindObject((User) list.get(position));
+        holder.bindObject((Product) list.get(position));
     }
 
     @Override
@@ -62,11 +63,11 @@ public class ProductCollectionAdapter extends BaseAdapter<ProductCollectionAdapt
             this.binding = binding;
         }
 
-        void bindObject(final User user) {
+        void bindObject(final Product product) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new ProductCollectionItemViewModel(context, user));
+                binding.setViewModel(new ProductCollectionItemViewModel(context, product));
             } else {
-                binding.getViewModel().setEntity(user);
+                binding.getViewModel().setEntity(product);
             }
         }
     }

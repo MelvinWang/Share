@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityWaitSendProdOrderInfoBinding;
-import com.melvin.share.modelview.WaitSendProOrderInfoViewModel;
+import com.melvin.share.modelview.acti.WaitSendProOrderInfoViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 import com.melvin.share.dialog.UrgeBillDialog;

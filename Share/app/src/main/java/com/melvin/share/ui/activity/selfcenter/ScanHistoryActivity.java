@@ -7,9 +7,12 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityScanHistoryBinding;
-import com.melvin.share.modelview.ScanHistoryViewModel;
+import com.melvin.share.modelview.acti.ScanHistoryViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Author: Melvin
@@ -25,7 +28,7 @@ public class ScanHistoryActivity extends BaseActivity implements MyRecyclerView.
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private ScanHistoryViewModel scanHistoryViewModel;
-
+    private Map map;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_scan_history);
@@ -36,13 +39,15 @@ public class ScanHistoryActivity extends BaseActivity implements MyRecyclerView.
     }
 
     private void ininData() {
+        map=new HashMap();
+        map.put("customer.id", "1");
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         scanHistoryViewModel = new ScanHistoryViewModel(this, mRecyclerView, mRoot, binding.edit, binding.cancel, binding.delete);
         binding.setViewModel(scanHistoryViewModel);
-        scanHistoryViewModel.requestData();
+        scanHistoryViewModel.requestData(map);
     }
 
     /**
@@ -50,7 +55,7 @@ public class ScanHistoryActivity extends BaseActivity implements MyRecyclerView.
      */
     @Override
     public void onRefresh() {
-        scanHistoryViewModel.requestData();
+        scanHistoryViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 

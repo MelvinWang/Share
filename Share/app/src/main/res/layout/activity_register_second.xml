@@ -54,6 +54,7 @@
                     android:drawablePadding="20dp"
                     android:hint="输入密码"
                     android:paddingLeft="20dp"
+                    android:inputType="textPassword"
                     android:textColor="@color/color_999"
                     android:textColorHint="@color/color_999"
                     android:textSize="@dimen/page_18" />
@@ -73,9 +74,11 @@
                     android:paddingLeft="20dp"
                     android:textColor="@color/color_999"
                     android:textColorHint="@color/color_999"
+                    android:inputType="textPassword"
                     android:textSize="@dimen/page_18" />
 
                 <Button
+                    android:onClick="done"
                     android:id="@+id/done"
                     style="@style/CircularBtnStyle"
                     android:layout_below="@id/confirm_password"

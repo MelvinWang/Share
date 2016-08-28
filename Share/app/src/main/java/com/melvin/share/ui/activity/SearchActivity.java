@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivitySearchBinding;
-import com.melvin.share.modelview.SearchViewModel;
+import com.melvin.share.modelview.acti.SearchViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

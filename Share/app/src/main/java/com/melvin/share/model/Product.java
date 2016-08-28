@@ -24,4 +24,10 @@ public class Product  extends BaseModel{
     public String price;
     public String place;
 
+    public String recordId;
+    public String productId;
+
+    public boolean isChecked=false;
+    public boolean isShow=false;
+
 }

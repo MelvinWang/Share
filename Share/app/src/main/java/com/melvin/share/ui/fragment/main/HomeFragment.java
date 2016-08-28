@@ -23,11 +23,13 @@ import com.melvin.share.adapter.HomeProductAdapter;
 import com.melvin.share.adapter.HomeShopAdapter;
 import com.melvin.share.adapter.LocalImgAdapter;
 import com.melvin.share.adapter.UrlImgAdapter;
+import com.melvin.share.app.BaseApplication;
 import com.melvin.share.databinding.FragmentHomeBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.Category;
 import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.ShopBean;
 import com.melvin.share.ui.activity.common.MainActivity;
 import com.melvin.share.ui.activity.home.ClothActivity;
 import com.melvin.share.ui.activity.home.DeliciousActivity;
@@ -234,17 +236,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         requestNewProduct();
         requestRecommendProdcut();
         requesRecommentShop();
-
-        List list = new ArrayList<>();
-        for (int i = 1; i <= 8; i++) {
-            User user = new User();
-            user.password = "1";
-            user.username = "2";
-            list.add(user);
-        }
-        data3.addAll(list);
-        shopAdapter.notifyDataSetChanged();
-
     }
 
 
@@ -308,7 +299,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         Map map = new HashMap();
         map.put("saleTotal", "1");
         map.put("rows", "8");
-        Subscription subscribe = fromNetwork.findProductsInHomePage(map)
+        fromNetwork.findProductsInHomePage(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RxListSubscribe<Product>(mContext) {
@@ -329,7 +320,22 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      * 推荐店铺
      */
     private void requesRecommentShop() {
+        fromNetwork.findRecommendedSeller()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<ArrayList<ShopBean>>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<ShopBean> list) {
+                        data3.addAll(list);
+                        shopAdapter.notifyDataSetChanged();
+                    }
 
+                    @Override
+                    protected void myError(String message) {
+
+                    }
+
+                });
     }
 
     private void addUrilImg() {

@@ -5,6 +5,13 @@
 
     <data class="ActivityNewAddressBinding">
 
+        <variable
+            name="addressBean"
+            type="com.melvin.share.model.serverReturn.AddressBean" />
+
+        <variable
+            name="event"
+            type="com.melvin.share.event.AddressEvent" />
     </data>
 
     <LinearLayout
@@ -23,6 +30,7 @@
             app:title=" ">
 
             <TextView
+                android:id="@+id/title_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -49,12 +57,15 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/recever"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_name"
                 android:background="@null"
-                android:hint="请输入姓名"
-                android:padding="20dp" />
+                android:hint="请输入姓名(必填)"
+                android:padding="20dp"
+                android:text="@{addressBean.recever}"
+                app:addTextChangedListener="@{event.receverEditTextWatcher}" />
         </RelativeLayout>
 
         <TextView
@@ -76,12 +87,16 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/recever_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_phone"
                 android:background="@null"
-                android:hint="请输入手机号"
-                android:padding="20dp" />
+                android:hint="请输入手机号(必填)"
+                android:padding="20dp"
+                android:inputType="number"
+                android:text="@{addressBean.receverPhone}"
+                app:addTextChangedListener="@{event.receverPhoneEditTextWatcher}" />
         </RelativeLayout>
 
         <TextView
@@ -91,6 +106,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:background="@color/white">
 
             <TextView
@@ -102,13 +118,18 @@
                 android:text="省、市、区"
                 android:textSize="18sp" />
 
-            <EditText
+            <TextView
+                android:id="@+id/area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_city"
                 android:background="@null"
-                android:hint="请输入城市"
-                android:padding="20dp" />
+                android:hint="请选择城市(必填)"
+                android:onClick="onCityName"
+                android:padding="20dp"
+                android:text="@{addressBean.area}"
+                android:textSize="@dimen/page_18"
+                />
         </RelativeLayout>
 
         <TextView
@@ -130,12 +151,16 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/postalcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_city_number"
                 android:background="@null"
                 android:hint="请输入邮政编码"
-                android:padding="20dp" />
+                android:padding="20dp"
+                android:inputType="number"
+                android:text="@{addressBean.postalcode}"
+                app:addTextChangedListener="@{event.postalcodeEditTextWatcher}" />
         </RelativeLayout>
 
         <TextView
@@ -157,13 +182,16 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tv_detail_address"
                 android:background="@null"
-                android:hint="请输入详细地址"
+                android:hint="请输入详细地址(必填)"
                 android:padding="20dp"
-                android:textSize="@dimen/page_12" />
+                android:text="@{addressBean.address}"
+                android:textSize="@dimen/page_12"
+                app:addTextChangedListener="@{event.addressEditTextWatcher}" />
         </RelativeLayout>
 
         <TextView
@@ -176,6 +204,7 @@
             android:layout_height="match_parent">
 
             <Button
+                android:onClick="save"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"

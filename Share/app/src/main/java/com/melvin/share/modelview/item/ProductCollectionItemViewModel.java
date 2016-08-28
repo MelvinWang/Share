@@ -6,7 +6,10 @@ import android.databinding.BaseObservable;
 import android.view.View;
 import android.widget.CompoundButton;
 
+import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.network.GlobalUrl;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 
 /**
@@ -18,36 +21,49 @@ import com.melvin.share.ui.activity.ProductInfoActivity;
  */
 public class ProductCollectionItemViewModel extends BaseObservable {
 
-    private User user;
+    private Product product;
     private Context context;
     private String number = "1";
 
-    public ProductCollectionItemViewModel(Context context, User user) {
-        this.user = user;
+    public ProductCollectionItemViewModel(Context context, Product product) {
+        this.product = product;
         this.context = context;
     }
 
     public void onItemClick(View view) {
-        context.startActivity(new Intent(context, ProductInfoActivity.class));
+        Intent intent = new Intent(context, ProductInfoActivity.class);
+        intent.putExtra("productId",product.id);
+        context.startActivity(intent);
     }
 
-
     public void setIsShow(boolean b) {
-        user.isShow = b;
+        product.isShow = b;
     }
 
     public boolean getIsShow() {
-        return user.isShow;
+        return product.isShow;
     }
 
     public void setIsFocus(boolean b) {
-        user.isChecked = b;
+        product.isChecked = b;
     }
 
     public boolean getIsFocus() {
-        return user.isChecked;
+        return product.isChecked;
     }
 
+    public String getProductName() {
+        return product.productName;
+    }
+    public String getShareTimes() {
+        return product.shareTimes;
+    }
+
+    public String getPrice() {
+        return "￥:"+product.price;
+    } public String getPlace() {
+        return product.place;
+    }
     /**
      * 勾选状态判断,修改值后，以便操作之时ViewModel可以利用到
      *
@@ -64,11 +80,17 @@ public class ProductCollectionItemViewModel extends BaseObservable {
     }
 
     public String getImgUrl() {
-        return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
+        String[] split = product.picture.split("\\|");
+        if (split != null && split.length >= 1) {
+            String url = GlobalUrl.SERVICE_URL + split[0];
+            LogUtils.e("哈哈"+url);
+            return url;
+        }
+        return "";
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public void setEntity(Product product) {
+        this.product = product;
         notifyChange();
     }
 }

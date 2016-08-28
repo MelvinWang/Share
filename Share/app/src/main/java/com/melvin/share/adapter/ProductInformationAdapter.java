@@ -10,6 +10,7 @@ import com.melvin.share.R;
 import com.melvin.share.databinding.ProductInfoimgItemBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.ImgUrlBean;
 import com.melvin.share.modelview.item.ProductInfoimgItemViewModel;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class ProductInformationAdapter extends BaseAdapter<ProductInformationAda
 
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
-        holder.bindObject((User) list.get(position));
+        holder.bindObject((ImgUrlBean) list.get(position));
     }
 
     @Override
@@ -62,11 +63,11 @@ public class ProductInformationAdapter extends BaseAdapter<ProductInformationAda
             this.binding = binding;
         }
 
-        void bindObject(final User user) {
+        void bindObject(final ImgUrlBean imgUrlBean) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new ProductInfoimgItemViewModel(context, user));
+                binding.setViewModel(new ProductInfoimgItemViewModel(context, imgUrlBean));
             } else {
-                binding.getViewModel().setEntity(user);
+                binding.getViewModel().setEntity(imgUrlBean);
             }
         }
     }

@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivitySearchProductBinding;
-import com.melvin.share.modelview.SearchProductViewModel;
+import com.melvin.share.modelview.acti.SearchProductViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

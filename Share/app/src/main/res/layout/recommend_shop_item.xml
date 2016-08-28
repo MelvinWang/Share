@@ -42,6 +42,7 @@
                 android:layout_centerInParent="true"
                 android:paddingTop="2dp"
                 android:textSize="@dimen/page_10"
+                android:text="@{viewModel.shopName}"
                 tools:text="店铺名称"
                  />
 

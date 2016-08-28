@@ -1,24 +1,42 @@
 package com.melvin.share.ui.fragment.productinfo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.allure.lbanners.LMBanners;
 import com.melvin.share.R;
+import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.Utils.ShapreUtils;
+import com.melvin.share.Utils.Utils;
 import com.melvin.share.adapter.ProductInformationAdapter;
 import com.melvin.share.adapter.UrlImgAdapter;
 import com.melvin.share.databinding.FragmentProductinfoBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.BaseReturnModel;
+import com.melvin.share.model.serverReturn.ImgUrlBean;
+import com.melvin.share.model.serverReturn.ProductDetailBean;
+import com.melvin.share.model.serverReturn.loginReturn.SelfInformation;
+import com.melvin.share.network.GlobalUrl;
+import com.melvin.share.ui.activity.ProductInfoActivity;
+import com.melvin.share.ui.activity.common.MainActivity;
 import com.melvin.share.ui.fragment.main.BaseFragment;
+import com.melvin.share.view.RxSubscribe;
 import com.melvin.share.view.ScrollRecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin
@@ -33,9 +51,9 @@ public class ProductInfoFragment extends BaseFragment {
     private LMBanners mLBanners;
     private ScrollRecyclerView mRecyclerView;
     private ProductInformationAdapter productInformationAdapter;
+    private Map map;
     private List<BaseModel> data = new ArrayList<>();
-    //本地图片
-    private ArrayList<Integer> localImages = new ArrayList<Integer>();
+    private List<ImgUrlBean> ImgUrlBeanList = new ArrayList<>();
     //网络图片
     private List<String> networkImages = new ArrayList<>();
 
@@ -53,6 +71,10 @@ public class ProductInfoFragment extends BaseFragment {
      * 初始化数据
      */
     private void initData() {
+        map = new HashMap();
+        map.put("productId", ProductInfoActivity.productId);
+        ShapreUtils.putParamCustomerId(map);
+        LogUtils.i("哈map" + map.toString());
         mRecyclerView = binding.recyclerView;
 
     }
@@ -60,12 +82,7 @@ public class ProductInfoFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        addLocalImg();
-        addUrilImg();
-        //本地用法
-//        mLBanners.setAdapter(new LocalImgAdapter(mContext), localImages);
-        //网络图片
-        mLBanners.setAdapter(new UrlImgAdapter(mContext), networkImages);
+//        addUrilImg();
         requestData();
     }
 
@@ -84,18 +101,37 @@ public class ProductInfoFragment extends BaseFragment {
      * 请求网络
      */
     private void requestData() {
-        List list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            User user = new User();
-            user.password = i+"";
-            user.username = i+"";
-            list.add(user);
-        }
-        data.addAll(list);
-        productInformationAdapter.notifyDataSetChanged();
+        fromNetwork.findProductByCustomer(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<ProductDetailBean>(mContext) {
+                    @Override
+                    protected void myNext(ProductDetailBean productDetailBean) {
+                        String picture = productDetailBean.product.picture;
+                        if (!TextUtils.isEmpty(picture)) {
+                            String[] split = picture.split("\\|");
+                            if (split != null) {
+                                for (int i = 0; i < split.length; i++) {
+                                    networkImages.add(GlobalUrl.SERVICE_URL + split[i]);
+                                    ImgUrlBean ImgUrlBean = new ImgUrlBean(GlobalUrl.SERVICE_URL + split[i]);
+                                    ImgUrlBeanList.add(ImgUrlBean);
+                                }
+                            }
+                        }
+                        binding.productName.setText(productDetailBean.product.productName);
+                        binding.shareTime.setText(productDetailBean.product.shareTimes+"分享");
+                        data.addAll(ImgUrlBeanList);
+                        mLBanners.setAdapter(new UrlImgAdapter(mContext), networkImages);
+                        productInformationAdapter.notifyDataSetChanged();
+                    }
 
+
+                    @Override
+                    protected void myError(String message) {
+
+                    }
+                });
     }
-
 
 
     private void addUrilImg() {
@@ -105,15 +141,6 @@ public class ProductInfoFragment extends BaseFragment {
         networkImages.add("http://a.hiphotos.baidu.com/image/h%3D300/sign=61660ec2207f9e2f6f351b082f31e962/500fd9f9d72a6059e5c05d3e2f34349b023bbac6.jpg");
         networkImages.add("http://c.hiphotos.baidu.com/image/h%3D300/sign=f840688728738bd4db21b431918a876c/f7246b600c338744c90c3826570fd9f9d62aa09a.jpg");
 
-    }
-
-    private void addLocalImg() {
-        localImages.clear();
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
-        localImages.add(R.mipmap.ic_launcher);
     }
 
     @Override

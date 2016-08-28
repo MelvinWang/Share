@@ -10,18 +10,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.bumptech.glide.Glide;
 import com.melvin.share.R;
+import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.Utils;
 import com.melvin.share.databinding.ActivityShopInformationBinding;
+import com.melvin.share.model.serverReturn.ShopBean;
+import com.melvin.share.network.GlobalUrl;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.ui.fragment.shop.AllProductFragment;
 import com.melvin.share.ui.fragment.shop.NewProductFragment;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/24
- * <p>
+ * <p/>
  * 描述： 店铺信息
  */
 public class ShopInformationActivity extends BaseActivity {
@@ -32,6 +36,9 @@ public class ShopInformationActivity extends BaseActivity {
     public FrameLayout frameLayout;
     public AllProductFragment allProductFragment;
     public NewProductFragment newProductFragment;
+    public static String sellerId;
+    public String imgUrl = "";
+    private ShopBean shopBean;
 
     @Override
     protected void initView() {
@@ -48,6 +55,21 @@ public class ShopInformationActivity extends BaseActivity {
     }
 
     private void ininData() {
+        shopBean = getIntent().getParcelableExtra("shopBean");
+        sellerId = shopBean.id;
+        //设置值
+        binding.shopName.setText(shopBean.name);
+        String[] split = shopBean.logo.split("\\|");
+        if (split != null && split.length >= 1) {
+            String url = GlobalUrl.SERVICE_URL + split[0];
+            LogUtils.e("哈哈" + url);
+            imgUrl = url;
+        }
+        Glide.with(mContext)
+                .load(imgUrl)
+                .centerCrop()
+                .into(binding.shopImg);
+
         frameLayout = binding.productInformation;
         //获取到fragment的管理者
         supportFragmentManager = getSupportFragmentManager();

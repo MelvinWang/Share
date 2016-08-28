@@ -9,9 +9,8 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.Utils;
 import com.melvin.share.databinding.ActivityWaitReceiveProdOrderInfoBinding;
-import com.melvin.share.databinding.ActivityWaitSendProdOrderInfoBinding;
 import com.melvin.share.dialog.ConfirmReceiveDialog;
-import com.melvin.share.modelview.WaitReceiveProOrderInfoViewModel;
+import com.melvin.share.modelview.acti.WaitReceiveProOrderInfoViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

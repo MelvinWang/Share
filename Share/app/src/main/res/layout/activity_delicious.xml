@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.melvin.share.modelview.DeliciousViewModel" />
+            type="com.melvin.share.modelview.acti.DeliciousViewModel" />
 
     </data>
 

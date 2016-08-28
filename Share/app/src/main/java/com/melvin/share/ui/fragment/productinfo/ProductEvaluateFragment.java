@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
+import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.adapter.ProductEvaluateAdapter;
 import com.melvin.share.databinding.FragmentProductEvaluateBinding;
 import com.melvin.share.model.BaseModel;

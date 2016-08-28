@@ -5,6 +5,7 @@ import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.ImgUrlBean;
 
 /**
  * Created Time: 2016/7/23.
@@ -15,11 +16,11 @@ import com.melvin.share.model.User;
  */
 public class ProductInfoimgItemViewModel extends BaseObservable {
 
-    private User user;
+    private ImgUrlBean imgUrlBean;
     private Context context;
 
-    public ProductInfoimgItemViewModel(Context context, User user) {
-        this.user = user;
+    public ProductInfoimgItemViewModel(Context context,ImgUrlBean imgUrlBean) {
+        this.imgUrlBean = imgUrlBean;
         this.context = context;
     }
 
@@ -28,11 +29,12 @@ public class ProductInfoimgItemViewModel extends BaseObservable {
     }
 
     public String getImgUrl() {
-        return "http://imgstore.cdn.sogou.com/app/a/100540002/486230.jpg";
+
+        return imgUrlBean.url;
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public void setEntity(ImgUrlBean imgUrlBean) {
+        this.imgUrlBean = imgUrlBean;
         notifyChange();
     }
 }

@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityShopCollectionBinding;
-import com.melvin.share.modelview.ShopCollectionViewModel;
+import com.melvin.share.modelview.acti.ShopCollectionViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

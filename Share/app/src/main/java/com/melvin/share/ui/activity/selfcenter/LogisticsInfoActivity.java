@@ -7,8 +7,7 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityLogisticsInfoBinding;
-import com.melvin.share.databinding.ActivityReceiveAddressBinding;
-import com.melvin.share.modelview.LogisticsInfoViewModel;
+import com.melvin.share.modelview.acti.LogisticsInfoViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
 

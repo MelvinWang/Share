@@ -81,6 +81,8 @@ public abstract class RxSubscribe<T> extends Subscriber<T> {
         e.printStackTrace();
         if (!BaseApplication.isNetworkAvailable(mContext)) { //这里自行替换判断网络的代码
             myError("网络不可用");
+        } else if (e instanceof ServerException) {
+            myError(e.getMessage());
         } else {
             myError("请求失败，请稍后再试...");
         }
@@ -88,7 +90,7 @@ public abstract class RxSubscribe<T> extends Subscriber<T> {
             m_pDialog.dismiss();
     }
 
-    protected abstract void     myNext(T t);
+    protected abstract void myNext(T t);
 
     protected abstract void myError(String message);
 

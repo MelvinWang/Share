@@ -7,9 +7,12 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.databinding.ActivityProductCollectionBinding;
-import com.melvin.share.modelview.ProductCollectionViewModel;
+import com.melvin.share.modelview.acti.ProductCollectionViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Author: Melvin
@@ -25,7 +28,7 @@ public class ProductCollectionActivity extends BaseActivity implements MyRecycle
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private ProductCollectionViewModel productCollectionViewModel;
-
+    private Map map;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_collection);
@@ -36,13 +39,15 @@ public class ProductCollectionActivity extends BaseActivity implements MyRecycle
     }
 
     private void ininData() {
+        map=new HashMap();
+        map.put("customer.id", "1");
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         productCollectionViewModel = new ProductCollectionViewModel(this, mRecyclerView, mRoot, binding.edit, binding.cancel, binding.delete);
         binding.setViewModel(productCollectionViewModel);
-        productCollectionViewModel.requestData();
+        productCollectionViewModel.requestData(map);
     }
 
     /**
@@ -50,7 +55,7 @@ public class ProductCollectionActivity extends BaseActivity implements MyRecycle
      */
     @Override
     public void onRefresh() {
-        productCollectionViewModel.requestData();
+        productCollectionViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 
