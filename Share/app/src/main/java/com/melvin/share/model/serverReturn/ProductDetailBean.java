@@ -44,6 +44,7 @@ public class ProductDetailBean {
         public String picture;
         public int id;
         public int level;
+        public int price;
         public int productTotal;
         public int shareTimes;
         public String productName;
@@ -78,7 +79,7 @@ public class ProductDetailBean {
         }
     }
 
-    public static class AttributesBean {
+    public static class AttributesBean extends BaseModel{
         public int id;
         public String attributeName;
 
@@ -97,7 +98,7 @@ public class ProductDetailBean {
          */
         public List<AttributeValuesBean> attributeValues;
 
-        public static class AttributeValuesBean {
+        public static class AttributeValuesBean extends BaseModel {
             public int id;
             public String attributeValueName;
 

@@ -14,17 +14,27 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxCarBus;
+import com.melvin.share.Utils.ShapreUtils;
+import com.melvin.share.Utils.Utils;
 import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.ShopCarAdapter;
 import com.melvin.share.databinding.FragmentShoppingCarBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.BaseReturnModel;
 import com.melvin.share.ui.activity.shopcar.ConfirmOrderActivity;
 import com.melvin.share.ui.activity.shopcar.ShoppingCarEditActivity;
 import com.melvin.share.view.MyRecyclerView;
+import com.melvin.share.view.RxSubscribe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin
@@ -41,6 +51,8 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
     private ShopCarAdapter shopCarAdapter;
     private List<BaseModel> data = new ArrayList<>();
     private View root;
+    private Map map;
+    public static boolean updateFlag = false;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
@@ -52,7 +64,7 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
             initAdapter();
             root = binding.getRoot();
             requestData();
-        }else{
+        } else {
             ViewUtils.removeParent(root);// 移除frameLayout之前的爹
         }
         return root;
@@ -63,6 +75,10 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
         super.onStart();
 //        LogUtils.i("ShoppingCarFragment+onStart");
         RxCarBus.get().register(this); //注册
+        if (updateFlag) {
+            updateFlag = false;
+            requestData();
+        }
     }
 
     /**
@@ -115,32 +131,42 @@ public class ShoppingCarFragment extends BaseFragment implements MyRecyclerView.
     @Override
     public void onStop() {
         super.onStop();
-//        LogUtils.i("ShoppingCarFragment+onStop");
         RxCarBus.get().unregister(this);//销毁
     }
 
-    //接收一个消息，消息区别是通过参数，因此这里接收一个post事件，参数为字串时，这里就可以收到。
+    /**
+     * 接收一个消息
+     *
+     * @param flag
+     */
     @Subscribe
-    public void flagChecked(String food) {
-        Toast.makeText(mContext, food, Toast.LENGTH_SHORT).show();
+    public void flag(String flag) {
+
+        Toast.makeText(mContext, flag, Toast.LENGTH_SHORT).show();
     }
 
     /**
      * 请求网络
      */
     private void requestData() {
-        List list = new ArrayList<>();
-        User user = new User();
-        user.password = "1";
-        user.username = "2";
-        list.add(user);
-        User user1 = new User();
-        user1.password = "3";
-        user1.username = "4";
-        list.add(user1);
-        data.addAll(list);
-        shopCarAdapter.notifyDataSetChanged();
+        map = new HashMap();
+        ShapreUtils.putParamCustomerId(map);
+        fromNetwork.findCartByCustomer(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<ArrayList<Product>>(mContext) {
+                    @Override
+                    protected void myNext(ArrayList<Product> list) {
+                        data.clear();
+                        data.addAll(list);
+                        shopCarAdapter.notifyDataSetChanged();
+                    }
 
+                    @Override
+                    protected void myError(String message) {
+                        Utils.showToast(mContext, message);
+                    }
+                });
     }
 
     /**

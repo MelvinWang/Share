@@ -6,10 +6,14 @@ import android.widget.LinearLayout;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
+import com.melvin.share.Utils.ShapreUtils;
 import com.melvin.share.databinding.ActivityShoppingCarEditBinding;
 import com.melvin.share.modelview.acti.ShopCarEditViewModel;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.view.MyRecyclerView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Author: Melvin
@@ -25,7 +29,7 @@ public class ShoppingCarEditActivity extends BaseActivity implements MyRecyclerV
     private MyRecyclerView mRecyclerView;
     private LinearLayout mRoot;
     private ShopCarEditViewModel shopCarEditViewModel;
-
+    private Map map;
     @Override
     protected void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_car_edit);
@@ -36,13 +40,15 @@ public class ShoppingCarEditActivity extends BaseActivity implements MyRecyclerV
     }
 
     private void ininData() {
+        map = new HashMap();
+        ShapreUtils.putParamCustomerId(map);
         mRoot = binding.root;
         mRecyclerView = binding.recyclerView;
         mRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setLoadingListener(this);
         shopCarEditViewModel = new ShopCarEditViewModel(this, mRecyclerView, mRoot);
         binding.setViewModel(shopCarEditViewModel);
-        shopCarEditViewModel.requestData();
+        shopCarEditViewModel.requestData(map);
     }
 
     /**
@@ -50,7 +56,7 @@ public class ShoppingCarEditActivity extends BaseActivity implements MyRecyclerV
      */
     @Override
     public void onRefresh() {
-        shopCarEditViewModel.requestData();
+        shopCarEditViewModel.requestData(map);
         mRecyclerView.refreshComplete();
     }
 

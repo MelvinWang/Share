@@ -39,7 +39,7 @@ public class ConfirmOrderViewModel extends BaseRecyclerViewModel<BaseModel> impl
 
     public void requestData() {
         List list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             User user = new User();
             user.password = i+"";
             user.username = i+"";

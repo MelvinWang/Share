@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
@@ -24,6 +25,7 @@
             android:background="@color/white">
 
             <TextView
+                android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -34,6 +36,7 @@
                 android:textSize="@dimen/page_15" />
 
             <ImageView
+                android:id="@+id/dismiss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -52,15 +55,16 @@
             android:paddingTop="15dp">
 
             <TextView
+                android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-
                 android:text="￥ 56:00"
                 android:textColor="@color/ff9000"
                 android:textSize="@dimen/page_15" />
 
             <TextView
+                android:id="@+id/store"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -72,40 +76,107 @@
             style="@style/CommonLine"
             android:layout_marginTop="3dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="14dp"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:text="颜色分类"
-            android:textColor="@color/color_333"
-            android:textSize="@dimen/page_15" />
-
         <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="14dp">
+            android:orientation="vertical">
 
-            <Button
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/btn_rectangle_withradus"
-                android:text="紫色"
-                android:textColor="@color/app_common_red"
-                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/text_name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/color_333"
+                android:textSize="@dimen/page_15" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                tools:listitem="@layout/product_attri_item" />
 
-            <Button
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/btn_rectangle_withradus"
-                android:text="红色"
-                android:textColor="@color/app_common_red"
-                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/color_333"
+                android:textSize="@dimen/page_15" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                tools:listitem="@layout/product_attri_item" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_name3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/color_333"
+                android:textSize="@dimen/page_15" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                tools:listitem="@layout/product_attri_item" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_name4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/color_333"
+                android:textSize="@dimen/page_15" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                tools:listitem="@layout/product_attri_item" />
+
         </LinearLayout>
 
         <TextView
@@ -115,7 +186,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="50dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="14dp">
 

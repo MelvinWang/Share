@@ -7,6 +7,7 @@ import com.melvin.share.model.serverReturn.AddressBean;
 import com.melvin.share.model.serverReturn.BaseReturnModel;
 import com.melvin.share.model.serverReturn.LoginReturn;
 import com.melvin.share.model.serverReturn.ProductDetailBean;
+import com.melvin.share.model.serverReturn.ProductStore;
 import com.melvin.share.model.serverReturn.ShopBean;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -23,9 +24,9 @@ import rx.Observable;
 
 /**
  * Created Time: 2016/7/17.
- * <p/>
+ * <p>
  * Author:Melvin
- * <p/>
+ * <p>
  * 功能：网络请求工具及其接口
  */
 public class NetworkUtil {
@@ -78,6 +79,11 @@ public class NetworkUtil {
         @POST("/app/product/findProductByCustomer")
         Observable<ProductDetailBean> findProductByCustomer(@FieldMap Map<Object, Object> map);
 
+        //查询到具体商品的库存量等信息
+        @FormUrlEncoded
+        @POST("/app/repertory/findProductByAttributeValueIds")
+        Observable<ProductStore> findProductByAttributeValueIds(@FieldMap Map<Object, Object> map);
+
         //删除浏览记录
         @FormUrlEncoded
         @POST("/app/product/deleteRecord")
@@ -121,7 +127,7 @@ public class NetworkUtil {
         //查看用户的购物车
         @FormUrlEncoded
         @POST("/app/cart/findCartByCustomer")
-        Observable<BaseReturnModel> findCartByCustomer(@FieldMap Map<Object, Object> map);
+        Observable<ArrayList<Product>> findCartByCustomer(@FieldMap Map<Object, Object> map);
 
         //购物车添加或者修改
         @FormUrlEncoded

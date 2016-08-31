@@ -83,31 +83,13 @@
                 style="@style/CommonLine"
                 android:layout_marginTop="3dp" />
 
-            <LinearLayout
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/detail_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:text="产品信息:"
-                    android:textColor="@color/color_333"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:padding="10dp"
-                    android:text="产品描述"
-                    android:textColor="@color/color_777"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                android:minHeight="100dp"
+                tools:listitem="@layout/product_detail_item" />
 
             <TextView
                 style="@style/CommonLine"
@@ -119,6 +101,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 tools:listitem="@layout/product_infoimg_item" />
+
         </LinearLayout>
 
     </com.melvin.share.view.MyScrollview>

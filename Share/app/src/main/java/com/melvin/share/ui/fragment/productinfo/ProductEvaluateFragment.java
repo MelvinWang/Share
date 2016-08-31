@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
+import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.ProductEvaluateAdapter;
 import com.melvin.share.databinding.FragmentProductEvaluateBinding;
 import com.melvin.share.model.BaseModel;
@@ -34,14 +35,21 @@ public class ProductEvaluateFragment extends BaseFragment implements MyRecyclerV
     private MyRecyclerView mRecyclerView;
     private ProductEvaluateAdapter productEvaluateAdapter;
     private List<BaseModel> data = new ArrayList<>();
+    private View root;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_evaluate, container, false);
-        mContext = getActivity();
-        initData();
-        initAdapter();
-        return binding.getRoot();
+        if (root == null) {
+            mContext = getActivity();
+            initData();
+            initAdapter();
+            root = binding.getRoot();
+            requestData();
+        } else {
+            ViewUtils.removeParent(root);// 移除frameLayout之前的爹
+        }
+        return root;
     }
 
     /**
@@ -64,12 +72,6 @@ public class ProductEvaluateFragment extends BaseFragment implements MyRecyclerV
         mRecyclerView.setAdapter(productEvaluateAdapter);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        requestData();
-    }
-
     /**
      * 请求网络
      */
@@ -77,8 +79,8 @@ public class ProductEvaluateFragment extends BaseFragment implements MyRecyclerV
         List list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             User user = new User();
-            user.password = i+"";
-            user.username = i+"";
+            user.password = i + "";
+            user.username = i + "";
             list.add(user);
         }
         data.addAll(list);

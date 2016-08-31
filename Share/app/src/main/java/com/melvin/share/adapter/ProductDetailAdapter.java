@@ -7,38 +7,38 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.melvin.share.R;
-import com.melvin.share.databinding.OrderCodeItemBinding;
-import com.melvin.share.databinding.ShopCarItemBinding;
+import com.melvin.share.databinding.ProductDetailItemBinding;
+import com.melvin.share.databinding.ProductInfoimgItemBinding;
 import com.melvin.share.model.BaseModel;
-import com.melvin.share.model.Product;
-import com.melvin.share.model.User;
-import com.melvin.share.modelview.item.OrderCodeItemViewModel;
-import com.melvin.share.modelview.item.ShopCarItemViewModel;
+import com.melvin.share.model.serverReturn.ImgUrlBean;
+import com.melvin.share.model.serverReturn.ProductDetailBean;
+import com.melvin.share.modelview.item.ProductDetailItemViewModel;
+import com.melvin.share.modelview.item.ProductInfoimgItemViewModel;
 
 import java.util.List;
 
 
 /**
- * Created Time: 2016/7/29.
- * <p/>
+ * Created Time: 2016/7/25.
+ * <p>
  * Author:Melvin
- * <p/>
- * 功能：购物车Adapter
+ * <p>
+ * 功能：单个商品详细里的详细信息Adapter
  */
-public class ShopCarAdapter extends BaseAdapter<ShopCarAdapter.BindingHolder> {
+public class ProductDetailAdapter extends BaseAdapter<ProductDetailAdapter.BindingHolder> {
     private List<BaseModel> list;
     private Context context;
 
-    public ShopCarAdapter(Context context, List<BaseModel> list) {
+    public ProductDetailAdapter(Context context, List<BaseModel> list) {
         this.list = list;
         this.context = context;
     }
 
     @Override
     public BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ShopCarItemBinding binding = DataBindingUtil.inflate(
+        ProductDetailItemBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.shop_car_item,
+                R.layout.product_detail_item,
                 parent,
                 false);
         return new BindingHolder(binding);
@@ -46,7 +46,7 @@ public class ShopCarAdapter extends BaseAdapter<ShopCarAdapter.BindingHolder> {
 
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
-        holder.bindObject((Product) list.get(position));
+        holder.bindObject((ProductDetailBean.DetailsBean) list.get(position));
     }
 
     @Override
@@ -58,18 +58,18 @@ public class ShopCarAdapter extends BaseAdapter<ShopCarAdapter.BindingHolder> {
      * Holder
      */
     public class BindingHolder extends RecyclerView.ViewHolder {
-        final ShopCarItemBinding binding;
+        final ProductDetailItemBinding binding;
 
-        public BindingHolder(ShopCarItemBinding binding) {
+        public BindingHolder(ProductDetailItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bindObject(final Product product) {
+        void bindObject(final ProductDetailBean.DetailsBean detailsBean) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new ShopCarItemViewModel(context, product));
+                binding.setViewModel(new ProductDetailItemViewModel(context, detailsBean));
             } else {
-                binding.getViewModel().setEntity(product);
+                binding.getViewModel().setEntity(detailsBean);
             }
         }
     }

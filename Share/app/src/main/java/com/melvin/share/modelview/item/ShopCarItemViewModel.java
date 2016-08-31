@@ -6,9 +6,24 @@ import android.databinding.BaseObservable;
 import android.view.View;
 import android.widget.CompoundButton;
 
+import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxCarBus;
+import com.melvin.share.Utils.ShapreUtils;
+import com.melvin.share.Utils.Utils;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.model.serverReturn.BaseReturnModel;
+import com.melvin.share.network.GlobalUrl;
+import com.melvin.share.network.NetworkUtil;
 import com.melvin.share.ui.activity.ProductInfoActivity;
+import com.melvin.share.view.RxSubscribe;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit.Retrofit;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created Time: 2016/7/23.
@@ -18,20 +33,34 @@ import com.melvin.share.ui.activity.ProductInfoActivity;
  * 功能：购物车item的ViewModel
  */
 public class ShopCarItemViewModel extends BaseObservable {
-
-    private User user;
+    private Retrofit retrofit;
+    protected NetworkUtil.FromNetwork fromNetwork;
+    private Product product;
     private Context context;
     private boolean isShowEdit = true;
     private boolean isShowDone = false;
-    private String number = "1";
+    private String number;
+    private String lastNumber;
 
-    public ShopCarItemViewModel(Context context, User user) {
-        this.user = user;
+    public ShopCarItemViewModel(Context context, Product product) {
+        retrofit = NetworkUtil.getRetrofit();
+        fromNetwork = retrofit.create(NetworkUtil.FromNetwork.class);
+        this.product = product;
+        number = product.productNumber;
+        lastNumber = product.productNumber;
         this.context = context;
     }
 
     public void onItemClick(View view) {
         context.startActivity(new Intent(context, ProductInfoActivity.class));
+    }
+
+    public String getProductName() {
+        return product.repertoryName;
+    }
+
+    public String getPrice() {
+        return "￥" +product.price;
     }
 
     public String getNumber() {
@@ -76,7 +105,29 @@ public class ShopCarItemViewModel extends BaseObservable {
         setIsShowEdit(true);
         setIsShowDone(false);
         notifyChange();
+        if (!number.equals(lastNumber)) {//需要修改
+            //加入到购物车
+            Map carMap = new HashMap();
+            carMap.put("repertory.id", product.repertoryId);
+            carMap.put("productNum", number);
+            ShapreUtils.putParamCustomerDotId(carMap);
+            fromNetwork.persist(carMap)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new RxSubscribe<BaseReturnModel>(context) {
+                        @Override
+                        protected void myNext(BaseReturnModel baseReturnModel) {
+                            Utils.showToast(context, baseReturnModel.message);
+                        }
+
+                        @Override
+                        protected void myError(String message) {
+
+                        }
+                    });
+        }
     }
+
     /**
      * 勾选状态判断,修改值后，以便操作之时TemplateViewModel可以利用到
      *
@@ -86,17 +137,23 @@ public class ShopCarItemViewModel extends BaseObservable {
         return new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                RxCarBus.get().post("hello"+isChecked);
+                RxCarBus.get().post("hello" + isChecked);
             }
         };
     }
 
     public String getImgUrl() {
-        return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
+        String[] split = product.picture.split("\\|");
+        if (split != null && split.length >= 1) {
+            String url = GlobalUrl.SERVICE_URL + split[0];
+            LogUtils.e("哈哈" + url);
+            return url;
+        }
+        return "";
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public void setEntity(Product product) {
+        this.product = product;
         notifyChange();
     }
 }

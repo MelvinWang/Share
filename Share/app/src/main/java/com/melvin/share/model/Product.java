@@ -21,6 +21,7 @@ public class Product  extends BaseModel{
     public String shareTimes;
     public String productName;
 
+
     public String price;
     public String place;
 
@@ -29,5 +30,9 @@ public class Product  extends BaseModel{
 
     public boolean isChecked=false;
     public boolean isShow=false;
+    //购物车
+    public String productNumber;
+    public String repertoryId;
+    public String repertoryName;
 
 }
