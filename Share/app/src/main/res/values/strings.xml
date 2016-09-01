@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PureFrame</string>
+    <string name="app_name">众分享</string>
     <string name="empty_string">empty</string>
     <string name="dynamicbox_retry">加载...</string>
     <string name="scan_text">将二维码放入框内，即可扫描</string>

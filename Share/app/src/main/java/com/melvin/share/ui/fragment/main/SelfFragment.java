@@ -3,6 +3,7 @@ package com.melvin.share.ui.fragment.main;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import com.melvin.share.R;
 import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.ViewUtils;
+import com.melvin.share.app.BaseApplication;
 import com.melvin.share.databinding.FragmentSelfBinding;
 import com.melvin.share.ui.activity.common.LoginActivity;
 import com.melvin.share.ui.activity.selfcenter.AboutUsActivity;
@@ -93,8 +95,14 @@ public class SelfFragment extends BaseFragment implements View.OnClickListener {
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.click_avatar://头像登录
-                intent.setClass(mContext, LoginActivity.class);
-                mContext.startActivity(intent);
+                String customerId = BaseApplication.mPre.getString("customerId", null);
+                if (!TextUtils.isEmpty(customerId)) {
+                    intent.setClass(mContext, LoginActivity.class);
+                    mContext.startActivity(intent);
+                }else{
+                    intent.setClass(mContext, LoginActivity.class);
+                    mContext.startActivity(intent);
+                }
                 break;
             case R.id.click_product_collection://商品收藏
                 intent.setClass(mContext, ProductCollectionActivity.class);

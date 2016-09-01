@@ -4,8 +4,13 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.view.View;
 
+import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxBus;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
+import com.melvin.share.network.GlobalUrl;
+
+import java.math.BigDecimal;
 
 /**
  * Created Time: 2016/8/3.
@@ -16,26 +21,40 @@ import com.melvin.share.model.User;
  */
 public class ConfirmOrderItemViewModel extends BaseObservable {
 
-    private User user;
+    private Product product;
     private Context context;
 
-    public ConfirmOrderItemViewModel(Context context, User user) {
-        this.user = user;
+    public ConfirmOrderItemViewModel(Context context,Product product) {
+        this.product = product;
         this.context = context;
     }
 
     public void onItemClick(View view) {
 
     }
-    public void onclickShare(View view) {
-        RxBus.get().post("hello22");
+
+    public String getProductName() {
+        return product.repertoryName;
+    }
+    public String getProductNumber() {
+        return "x"+product.productNumber;
+    }
+    public String getPrice() {
+        BigDecimal multiply = new BigDecimal(product.price).multiply(new BigDecimal(product.productNumber));
+        return "￥ "+multiply;
     }
     public String getImgUrl() {
-        return "http://h.hiphotos.baidu.com/image/h%3D300/sign=ff62800b073b5bb5a1d726fe06d2d523/a6efce1b9d16fdfa7807474eb08f8c5494ee7b23.jpg";
+        String[] split = product.picture.split("\\|");
+        if (split != null && split.length >= 1) {
+            String url = GlobalUrl.SERVICE_URL + split[0];
+            LogUtils.e("哈哈" + url);
+            return url;
+        }
+        return "";
     }
 
-    public void setEntity(User user) {
-        this.user = user;
+    public void setEntity(Product product) {
+        this.product = product;
         notifyChange();
     }
 }

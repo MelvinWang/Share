@@ -22,15 +22,16 @@ import com.melvin.share.ui.activity.common.AmendPasswordActivity;
 import com.melvin.share.ui.activity.common.AmendPhoneActivity;
 import com.melvin.share.ui.activity.common.BaseActivity;
 import com.melvin.share.ui.activity.common.CityTransparentActivity;
+import com.melvin.share.ui.activity.common.PictureActivity;
 
 import java.io.File;
 import java.util.Date;
 
 /**
  * Author: Melvin
- * <p>
+ * <p/>
  * Data： 2016/7/24
- * <p>
+ * <p/>
  * 描述： 设置
  */
 public class SettingActivity extends BaseActivity {
@@ -84,6 +85,15 @@ public class SettingActivity extends BaseActivity {
         this.sex = sex;
     }
 
+
+    /**
+     * 头像
+     *
+     * @param v
+     */
+    public void uploadHead(View v) {
+        startActivity(new Intent(mContext, PictureActivity.class));
+    }
 
     /**
      * 修改性别

@@ -13,9 +13,9 @@ import com.melvin.share.ui.activity.selfcenter.NewAddressActivity;
 
 /**
  * Created Time: 2016/7/24.
- * <p>
+ * <p/>
  * Author:Melvin
- * <p>
+ * <p/>
  * 功能：管理收货地址item的ViewModel
  */
 public class ManageAddressItemViewModel extends BaseObservable {

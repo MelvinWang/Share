@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.melvin.share.R;
 import com.melvin.share.databinding.SearchItemBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.SearchBean;
 import com.melvin.share.model.User;
 import com.melvin.share.modelview.item.SearchItemViewModel;
 
@@ -42,7 +43,7 @@ public class SearchAdapter extends BaseAdapter<SearchAdapter.BindingHolder> {
 
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
-        holder.bindObject((User) list.get(position));
+        holder.bindObject((SearchBean) list.get(position));
     }
 
     @Override
@@ -62,11 +63,11 @@ public class SearchAdapter extends BaseAdapter<SearchAdapter.BindingHolder> {
             this.binding = binding;
         }
 
-        void bindObject(final User user) {
+        void bindObject(final SearchBean searchBean) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new SearchItemViewModel(context, user));
+                binding.setViewModel(new SearchItemViewModel(context, searchBean));
             } else {
-                binding.getViewModel().setEntity(user);
+                binding.getViewModel().setEntity(searchBean);
             }
         }
     }

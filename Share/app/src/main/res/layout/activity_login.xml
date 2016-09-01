@@ -129,6 +129,7 @@
                 </RelativeLayout>
 
                 <Button
+                    android:onClick="login"
                     android:id="@+id/login"
                     style="@style/CircularBtnStyle"
                     android:layout_below="@id/about_password"

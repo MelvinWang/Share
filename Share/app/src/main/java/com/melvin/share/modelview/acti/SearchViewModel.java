@@ -10,6 +10,7 @@ import com.melvin.share.adapter.SearchAdapter;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.User;
 import com.melvin.share.modelview.BaseRecyclerViewModel;
+import com.melvin.share.network.GlobalData;
 import com.melvin.share.view.MyRecyclerView;
 import com.melvin.share.view.RequestView;
 
@@ -42,15 +43,7 @@ public class SearchViewModel extends BaseRecyclerViewModel<BaseModel> implements
     }
 
     public void requestData() {
-        List list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            User user = new User();
-            user.password = i+"";
-            user.username = i+"";
-            list.add(user);
-        }
-        data.addAll(list);
-
+        data.addAll(GlobalData.recentSearchList);
         onRequestSuccess(data);
     }
 

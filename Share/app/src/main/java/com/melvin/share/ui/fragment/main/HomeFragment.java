@@ -234,8 +234,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         requestAD();
         requestCategory();
         requestNewProduct();
-        requestRecommendProdcut();
         requesRecommentShop();
+
     }
 
 
@@ -257,7 +257,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 .subscribe(new RxSubscribe<ArrayList<Category>>(mContext) {
                     @Override
                     protected void myNext(ArrayList<Category> categorys) {
+                        LogUtils.i("商品分类");
                         categoryList.addAll(categorys);
+
                     }
 
                     @Override
@@ -281,8 +283,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 .subscribe(new RxListSubscribe<Product>(mContext) {
                     @Override
                     protected void myNext(ArrayList<Product> productList) {
+                        LogUtils.i("新商品");
                         data1.addAll(productList);
-                        userRecommendProductAdapter.notifyDataSetChanged();
+                        newProductAdapter.notifyDataSetChanged();
+                        requestRecommendProdcut();
+
                     }
 
                     @Override
@@ -305,8 +310,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 .subscribe(new RxListSubscribe<Product>(mContext) {
                     @Override
                     protected void myNext(ArrayList<Product> productList) {
+                        LogUtils.i("推荐商品");
                         data2.addAll(productList);
-                        newProductAdapter.notifyDataSetChanged();
+                        userRecommendProductAdapter.notifyDataSetChanged();
                     }
 
                     @Override

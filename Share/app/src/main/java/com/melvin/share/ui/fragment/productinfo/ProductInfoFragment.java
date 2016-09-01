@@ -1,8 +1,6 @@
 package com.melvin.share.ui.fragment.productinfo;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,35 +11,21 @@ import android.view.ViewGroup;
 
 import com.allure.lbanners.LMBanners;
 import com.melvin.share.R;
-import com.melvin.share.Utils.LogUtils;
-import com.melvin.share.Utils.ShapreUtils;
-import com.melvin.share.Utils.Utils;
 import com.melvin.share.Utils.ViewUtils;
 import com.melvin.share.adapter.ProductDetailAdapter;
 import com.melvin.share.adapter.ProductInformationAdapter;
 import com.melvin.share.adapter.UrlImgAdapter;
 import com.melvin.share.databinding.FragmentProductinfoBinding;
 import com.melvin.share.model.BaseModel;
-import com.melvin.share.model.User;
-import com.melvin.share.model.serverReturn.BaseReturnModel;
 import com.melvin.share.model.serverReturn.ImgUrlBean;
 import com.melvin.share.model.serverReturn.ProductDetailBean;
-import com.melvin.share.model.serverReturn.loginReturn.SelfInformation;
 import com.melvin.share.network.GlobalUrl;
-import com.melvin.share.popwindow.SelectPicPopupWindow;
 import com.melvin.share.ui.activity.ProductInfoActivity;
-import com.melvin.share.ui.activity.common.MainActivity;
 import com.melvin.share.ui.fragment.main.BaseFragment;
-import com.melvin.share.view.RxSubscribe;
 import com.melvin.share.view.ScrollRecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin

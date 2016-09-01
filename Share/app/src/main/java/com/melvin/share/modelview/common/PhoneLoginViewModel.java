@@ -6,8 +6,8 @@ import android.content.Intent;
 import com.melvin.share.Utils.Utils;
 import com.melvin.share.app.BaseApplication;
 import com.melvin.share.model.serverReturn.BaseReturnModel;
-import com.melvin.share.model.serverReturn.LoginReturn;
-import com.melvin.share.model.serverReturn.loginReturn.SelfInformation;
+
+import com.melvin.share.model.serverReturn.SelfInformation;
 import com.melvin.share.modelview.BaseCommonViewModel;
 import com.melvin.share.ui.activity.common.MainActivity;
 import com.melvin.share.view.RxSubscribe;
@@ -19,9 +19,9 @@ import rx.schedulers.Schedulers;
 
 /**
  * Author: Melvin
- * <p/>
+ * <p>
  * Data： 2016/8/24
- * <p/>
+ * <p>
  * 描述： 手机登录ViewModel
  */
 public class PhoneLoginViewModel extends BaseCommonViewModel {
@@ -65,7 +65,7 @@ public class PhoneLoginViewModel extends BaseCommonViewModel {
                     protected void myNext(BaseReturnModel<SelfInformation> baseReturnModel) {
                         Utils.showToast(context, baseReturnModel.message);
                         if (baseReturnModel.success) {
-                            mPref.edit().putString("customerId", baseReturnModel.result.customer.id).commit();
+                            mPref.edit().putString("customerId", baseReturnModel.result.customer.id + "").commit();
                             context.startActivity(new Intent(context, MainActivity.class));
                         }
                     }

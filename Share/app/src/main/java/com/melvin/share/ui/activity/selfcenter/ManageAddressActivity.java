@@ -6,14 +6,11 @@ import android.databinding.DataBindingUtil;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.google.common.base.Strings;
 import com.hwangjr.rxbus.annotation.Subscribe;
-import com.hwangjr.rxbus.annotation.Tag;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.melvin.share.R;
 import com.melvin.share.Utils.RxCommonBus;
 import com.melvin.share.Utils.ShapreUtils;
-import com.melvin.share.Utils.Utils;
 import com.melvin.share.databinding.ActivityReceiveAddressBinding;
 import com.melvin.share.model.serverReturn.AddressBean;
 import com.melvin.share.modelview.acti.ManageAddressViewModel;

@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 
 import com.melvin.share.R;
 import com.melvin.share.databinding.AllProductItemBinding;
-import com.melvin.share.databinding.OrderCodeItemBinding;
 import com.melvin.share.model.BaseModel;
 import com.melvin.share.model.Product;
-import com.melvin.share.model.User;
 import com.melvin.share.modelview.item.AllProductItemViewModel;
-import com.melvin.share.modelview.item.OrderCodeItemViewModel;
 
 import java.util.List;
 

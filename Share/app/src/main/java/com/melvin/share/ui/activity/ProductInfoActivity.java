@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Parcelable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ import com.melvin.share.adapter.ProductInformationAdapter;
 import com.melvin.share.adapter.UrlImgAdapter;
 import com.melvin.share.databinding.ActivityProductInfoBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.serverReturn.BaseReturnModel;
 import com.melvin.share.model.serverReturn.ImgUrlBean;
 import com.melvin.share.model.serverReturn.ProductDetailBean;
@@ -82,6 +84,8 @@ public class ProductInfoActivity extends BaseActivity {
 
     //加入到购物车里的参数
     private String repertoryId;
+    private String repertoryProductName;
+    private String repertoryProductPrice;
 
 
     @Override
@@ -112,7 +116,6 @@ public class ProductInfoActivity extends BaseActivity {
                 .subscribe(new RxSubscribe<ProductDetailBean>(mContext) {
                     @Override
                     protected void myNext(ProductDetailBean productDetailBean) {
-
                         productDetail = productDetailBean;
                         initTable();
                         setValueToDialog();
@@ -141,6 +144,8 @@ public class ProductInfoActivity extends BaseActivity {
                     @Override
                     protected void myNext(ProductStore productStore) {
                         repertoryId = productStore.id + "";
+                        repertoryProductName = productStore.name;
+                        repertoryProductPrice = productStore.price + "";
                         menuWindow.productName.setText(productStore.name);
                         menuWindow.price.setText("￥ " + productStore.price);
                         menuWindow.store.setText("库存" + productStore.totalNum);
@@ -337,11 +342,22 @@ public class ProductInfoActivity extends BaseActivity {
             menuWindow.dismiss();
             switch (v.getId()) {
                 case R.id.purchase_confirm:
-                    if (flag) {
-                        //直接购买
-                        startActivity(new Intent(mContext, ConfirmOrderActivity.class));
-                    } else {
-                        //加入到购物车
+                    if (flag) {   //直接购买
+                        List<Product> products = new ArrayList<>();
+                        //构造一个商品
+                        Product product = new Product();
+                        product.id = productDetail.product.id + "";
+                        product.repertoryId = repertoryId;
+                        product.productNumber = menuWindow.productNumber + "";
+                        product.picture = productDetail.product.picture;
+                        product.productName = repertoryProductName;
+                        product.repertoryName = repertoryProductName;
+                        product.price = repertoryProductPrice;
+                        products.add(product);
+                        Intent intent = new Intent(mContext, ConfirmOrderActivity.class);
+                        intent.putParcelableArrayListExtra("products", (ArrayList<? extends Parcelable>) products);
+                        startActivity(intent);
+                    } else { //加入到购物车
                         Map carMap = new HashMap();
                         carMap.put("repertory.id", repertoryId);
                         carMap.put("productNum", menuWindow.productNumber);

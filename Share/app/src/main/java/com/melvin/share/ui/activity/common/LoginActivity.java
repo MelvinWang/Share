@@ -41,6 +41,7 @@ public class LoginActivity extends BaseActivity {
     private void initData() {
         //将验证码用图片的形式显示出来s
         iv_showCode.setImageBitmap(CodeUtils.getInstance().createBitmap());
+        realCode = CodeUtils.getInstance().getCode();
     }
 
     /**

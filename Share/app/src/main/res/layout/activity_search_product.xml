@@ -34,14 +34,27 @@
 
                     <EditText
                         android:id="@+id/search_enter"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="6"
                         android:background="@drawable/edit_redline_background"
                         android:drawableLeft="@mipmap/search"
                         android:drawablePadding="10dp"
                         android:hint="关键字"
                         android:padding="4dp" />
+
+                    <TextView
+                        android:onClick="search"
+                        android:id="@+id/search_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:text="搜索" />
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
 
@@ -49,46 +62,41 @@
                 style="@style/CommonLine"
                 android:layout_marginTop="2dp" />
 
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/m_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@android:color/white"
                 android:orientation="horizontal"
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="综合"
-                    android:textSize="16sp" />
+                <RadioButton
+                    android:id="@+id/level"
+                    style="@style/ChoseTabStyle"
+                    android:text="综合" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="销量"
-                    android:textSize="16sp" />
+                <RadioButton
+                    android:id="@+id/sale_total"
+                    style="@style/ChoseTabStyle"
+                    android:text="销量" />
 
-                <TextView
+                <ImageView
+                    android:id="@+id/price"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="价格"
-                    android:textSize="16sp" />
+                    android:layout_marginTop="1dp"
+                    android:onClick="priceQuery"
+                    android:src="@mipmap/normal_price"
+                    android:text="综合" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="分享"
-                    android:textSize="16sp" />
-            </LinearLayout>
+                <RadioButton
+                    android:id="@+id/share_times"
+                    style="@style/ChoseTabStyle"
+                    android:text="分享" />
+            </RadioGroup>
 
             <com.melvin.share.view.MyRecyclerView
                 android:id="@+id/recyclerView"

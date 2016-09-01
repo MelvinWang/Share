@@ -10,6 +10,7 @@ import com.melvin.share.Utils.LogUtils;
 import com.melvin.share.Utils.RxCarBus;
 import com.melvin.share.Utils.ShapreUtils;
 import com.melvin.share.Utils.Utils;
+import com.melvin.share.event.PostEvent;
 import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
 import com.melvin.share.model.serverReturn.BaseReturnModel;
@@ -18,6 +19,7 @@ import com.melvin.share.network.NetworkUtil;
 import com.melvin.share.ui.activity.ProductInfoActivity;
 import com.melvin.share.view.RxSubscribe;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,12 +62,21 @@ public class ShopCarItemViewModel extends BaseObservable {
     }
 
     public String getPrice() {
-        return "￥" +product.price;
+        return "￥" + product.price;
     }
 
     public String getNumber() {
         return number;
     }
+
+    public boolean getIsChecked() {
+        return product.isChecked;
+    }
+
+    public void setIsChecked(boolean b) {
+        product.isChecked = b;
+    }
+
 
     public void onAddClick(View view) {
         this.number = Integer.parseInt(number) + 1 + "";
@@ -128,19 +139,16 @@ public class ShopCarItemViewModel extends BaseObservable {
         }
     }
 
-    /**
-     * 勾选状态判断,修改值后，以便操作之时TemplateViewModel可以利用到
-     *
-     * @return
-     */
-    public CompoundButton.OnCheckedChangeListener getChoiceListener() {
-        return new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                RxCarBus.get().post("hello" + isChecked);
-            }
-        };
+    public void oncheckProduct(View view) {
+        setIsChecked(!product.isChecked);
+        BigDecimal multiply = new BigDecimal(product.price).multiply(new BigDecimal(number));
+        PostEvent postEvent = new PostEvent();
+        postEvent.flag = product.isChecked;
+        postEvent.price = multiply;
+        RxCarBus.get().post(postEvent);
+        notifyChange();
     }
+
 
     public String getImgUrl() {
         String[] split = product.picture.split("\\|");

@@ -114,6 +114,9 @@
             android:name=".ui.activity.common.CityTransparentActivity"
             android:label=""
             android:theme="@style/MyDialogStyle" />
+        <activity
+            android:name=".ui.activity.common.PictureActivity"
+            android:screenOrientation="portrait" />
         <!-- 个人中心 ，第一排-->
         <activity
             android:name=".ui.activity.selfcenter.ProductCollectionActivity"

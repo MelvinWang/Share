@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import com.melvin.share.adapter.ConfrimOrderAdapter;
 import com.melvin.share.adapter.ManageAddressAdapter;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
 import com.melvin.share.modelview.BaseRecyclerViewModel;
 import com.melvin.share.view.MyRecyclerView;
@@ -34,19 +35,10 @@ public class ConfirmOrderViewModel extends BaseRecyclerViewModel<BaseModel> impl
         this.context = context;
         this.mRecyclerView = mRecyclerView;
         adapter = new ConfrimOrderAdapter(context, getData());
-
     }
 
-    public void requestData() {
-        List list = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            User user = new User();
-            user.password = i+"";
-            user.username = i+"";
-            list.add(user);
-        }
-        data.addAll(list);
-
+    public void requestData(ArrayList<Product> products) {
+        data.addAll(products);
         onRequestSuccess(data);
     }
 

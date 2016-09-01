@@ -69,8 +69,6 @@ public class ShopCarEditItemViewModel extends BaseObservable {
     public void oncheckProduct(View view) {
         setIsChecked(!product.isChecked);
         notifyChange();
-
-//        RxBus.get().post("hello"+isChecked);
     }
 
 

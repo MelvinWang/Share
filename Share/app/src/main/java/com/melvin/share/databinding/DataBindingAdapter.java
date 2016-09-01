@@ -9,9 +9,9 @@ import com.melvin.share.R;
 
 /**
  * Created Time: 2016/7/23.
- * <p/>
+ * <p>
  * Author:Melvin
- * <p/>
+ * <p>
  * 功能：绑定图片
  */
 public class DataBindingAdapter {
@@ -21,6 +21,7 @@ public class DataBindingAdapter {
         if (!TextUtils.isEmpty(imageUrl))
             Glide.with(iv.getContext())
                     .load(imageUrl)
+                    .placeholder(R.mipmap.logo)
                     .centerCrop()
                     .into(iv);
     }

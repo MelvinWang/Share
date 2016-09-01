@@ -45,9 +45,9 @@
                         android:textSize="@dimen/page_18" />
                 </android.support.v7.widget.Toolbar>
 
-                <TextView
-                    style="@style/CommonLine"
-                    android:layout_marginTop="0dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"/>
 
                 <LinearLayout
                     android:id="@+id/address"
@@ -144,13 +144,13 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="10dp"
-                            android:text="￥200.00"
+                            android:text="￥0.00"
                             android:textColor="@color/color_333" />
                     </RelativeLayout>
 
-                    <TextView
-                        style="@style/CommonLine"
-                        android:layout_marginTop="1dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -173,8 +173,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="10dp"
-                            android:text="￥200.00"
-                            android:textColor="@color/color_333" />
+                            android:textColor="@color/color_333"
+                            tools:text="￥200.00" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -200,6 +200,7 @@
                             android:textColor="@color/color_333" />
 
                         <CheckBox
+                            android:id="@+id/ali_pay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -210,9 +211,9 @@
                             android:paddingTop="10dp" />
                     </RelativeLayout>
 
-                    <TextView
-                        style="@style/CommonLine"
-                        android:layout_marginTop="0dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -236,6 +237,7 @@
                             android:textColor="@color/color_333" />
 
                         <CheckBox
+                            android:id="@+id/wechat_pay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"

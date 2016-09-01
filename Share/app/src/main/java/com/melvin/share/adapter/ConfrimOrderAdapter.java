@@ -10,6 +10,7 @@ import com.melvin.share.R;
 import com.melvin.share.databinding.ConfirmOrderItemBinding;
 import com.melvin.share.databinding.ReceiveAddressItemBinding;
 import com.melvin.share.model.BaseModel;
+import com.melvin.share.model.Product;
 import com.melvin.share.model.User;
 import com.melvin.share.modelview.item.ConfirmOrderItemViewModel;
 import com.melvin.share.modelview.item.ManageAddressItemViewModel;
@@ -33,7 +34,7 @@ public class ConfrimOrderAdapter extends BaseAdapter<ConfrimOrderAdapter.Binding
     }
 
     @Override
-    public ConfrimOrderAdapter.BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ConfirmOrderItemBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.confirm_order_item,
@@ -44,7 +45,7 @@ public class ConfrimOrderAdapter extends BaseAdapter<ConfrimOrderAdapter.Binding
 
     @Override
     public void onBindViewHolder(BindingHolder holder, int position) {
-        holder.bindObject((User) list.get(position));
+        holder.bindObject((Product) list.get(position));
     }
 
     @Override
@@ -64,11 +65,11 @@ public class ConfrimOrderAdapter extends BaseAdapter<ConfrimOrderAdapter.Binding
             this.binding = binding;
         }
 
-        void bindObject(final User user) {
+        void bindObject(final Product product) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new ConfirmOrderItemViewModel(context, user));
+                binding.setViewModel(new ConfirmOrderItemViewModel(context, product));
             } else {
-                binding.getViewModel().setEntity(user);
+                binding.getViewModel().setEntity(product);
             }
         }
     }

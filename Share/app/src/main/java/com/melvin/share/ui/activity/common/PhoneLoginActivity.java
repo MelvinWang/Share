@@ -63,6 +63,15 @@ public class PhoneLoginActivity extends BaseActivity {
     }
 
     /**
+     * 登录
+     *
+     * @param v
+     */
+    public void login(View v) {
+
+    }
+
+    /**
      * 获取验证码
      *
      * @param view

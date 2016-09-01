@@ -5,11 +5,12 @@ import com.melvin.share.model.Category;
 import com.melvin.share.model.Product;
 import com.melvin.share.model.serverReturn.AddressBean;
 import com.melvin.share.model.serverReturn.BaseReturnModel;
-import com.melvin.share.model.serverReturn.LoginReturn;
 import com.melvin.share.model.serverReturn.ProductDetailBean;
 import com.melvin.share.model.serverReturn.ProductStore;
+import com.melvin.share.model.serverReturn.SelfInformation;
 import com.melvin.share.model.serverReturn.ShopBean;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.RequestBody;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,7 +20,9 @@ import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import retrofit.http.FieldMap;
 import retrofit.http.FormUrlEncoded;
+import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.Part;
 import rx.Observable;
 
 /**
@@ -72,7 +75,7 @@ public class NetworkUtil {
         //会员凭手机验证码登录接口
         @FormUrlEncoded
         @POST("/app/customer/loginByCode")
-        Observable<BaseReturnModel> loginByCode(@FieldMap Map<Object, Object> map);
+        Observable<BaseReturnModel<SelfInformation>> loginByCode(@FieldMap Map<Object, Object> map);
 
         //查看商品详情
         @FormUrlEncoded
@@ -154,6 +157,9 @@ public class NetworkUtil {
         @POST("/app/address/persist")
         Observable<BaseReturnModel> persistAddress(@FieldMap Map<Object, Object> map);
 
+        @Multipart
+        @POST("/common/uploadPicture")
+        Observable<BaseReturnModel> uploadFile(@Part("file\"; filename=\"real.jpg\"") RequestBody file);
 
     }
 

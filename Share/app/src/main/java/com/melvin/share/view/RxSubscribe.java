@@ -79,7 +79,7 @@ public abstract class RxSubscribe<T> extends Subscriber<T> {
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        if (!BaseApplication.isNetworkAvailable(mContext)) { //这里自行替换判断网络的代码
+        if (!BaseApplication.isNetworkAvailable(mContext)) {
             myError("网络不可用");
         } else if (e instanceof ServerException) {
             myError(e.getMessage());
