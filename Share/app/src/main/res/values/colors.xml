@@ -13,6 +13,8 @@
     <color name="DCDCE6">#DCDCE6</color>
     <!--按钮背景-->
     <color name="eededede">#eededede</color>
+    <!--黑色-->
+    <color name="black">#000000</color>
 
     <!--广告栏指示灯背景-->
     <color name="banner_background">#463F40</color>

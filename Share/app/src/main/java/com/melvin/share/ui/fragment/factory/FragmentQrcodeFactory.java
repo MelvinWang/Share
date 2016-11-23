@@ -2,10 +2,6 @@ package com.melvin.share.ui.fragment.factory;
 
 import android.support.v4.app.Fragment;
 
-import com.melvin.share.ui.fragment.main.HomeFragment;
-import com.melvin.share.ui.fragment.main.QRcodeFragment;
-import com.melvin.share.ui.fragment.main.SelfFragment;
-import com.melvin.share.ui.fragment.main.ShoppingCarFragment;
 import com.melvin.share.ui.fragment.qrcode.OrderCodeFragment;
 import com.melvin.share.ui.fragment.qrcode.ShopCodeFragment;
 
